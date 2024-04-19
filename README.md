@@ -1,12 +1,13 @@
 # A3-Programacao
  
 <h3>Universidade do Sul de Santa Catarina - UNISUL</h3>
-<h3>Unidade Curricular: Programação de Soluções Computacionais</h3>
-<h3>Professores:</h3>
-<h3>  Osmar de Oliveira Braz Júnior</h3>
-<h3>  Richard Henrique de Souza</h3>
-<h3>  Luciano Figueiredo Coelho</h3>
-<h3>  Júlio Cesar Junior</h3>
+Unidade Curricular: Programação de Soluções Computacionais
+<p>Professores:
+  Osmar de Oliveira Braz Júnior
+  Richard Henrique de Souza
+  Luciano Figueiredo Coelho
+  Júlio Cesar Junior
+</p>
   
    <h2>A3 – Desempenho de compreensão</h2>
 
