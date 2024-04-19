@@ -45,7 +45,7 @@ Devem constar do trabalho escrito pelo menos os seguintes tópicos:
   Devem constar no escrito:<br />
   
 - Introdução
-- Desenvolvimento
+- Desenvolvimento: <br />
   Descrição do ambiente de desenvolvimento<br />
   Funcionalidades implementadas<br />
   Telas e suas descrições<br />
