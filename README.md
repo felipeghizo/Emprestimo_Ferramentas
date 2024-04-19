@@ -45,23 +45,23 @@ Devem constar do trabalho escrito pelo menos os seguintes tópicos:
   Devem constar no escrito:<br />
    - Introdução<br />
    - Desenvolvimento<br />
-     Descrição do ambiente de desenvolvimento<br />
-     Funcionalidades implementadas<br />
-     Telas e suas descrições<br />
-     Script para criação do banco de dados<br />
-     Link do projeto no Github<br />
+      ● Descrição do ambiente de desenvolvimento<br />
+      ● Funcionalidades implementadas<br />
+      ● Telas e suas descrições<br />
+      ● Script para criação do banco de dados<br />
+      ● Link do projeto no Github<br />
    - Conclusão<br />
  Avaliação da implementação irá considerar os seguintes requisitos e sua execução:
  1) Implementação CRUD amigos<br />
-   Entidade (0,5 pontos)<br />
-   Controle (0,5 pontos)<br />
-   Visualização (0,5 pontos)<br />
-   DAO (0,75 pontos)<br />
+    ● Entidade (0,5 pontos)<br />
+    ● Controle (0,5 pontos)<br />
+    ● Visualização (0,5 pontos)<br />
+    ● DAO (0,75 pontos)<br />
  2) Implementação CRUD ferramentas<br />
-   Entidade (0,5 pontos)<br />
-   Controle (0,5 pontos)<br />
-   Visualização (0,5 pontos)<br />
-   DAO (0,75 pontos)<br />
+    ● Entidade (0,5 pontos)<br />
+    ● Controle (0,5 pontos)<br />
+    ● Visualização (0,5 pontos)<br />
+    ● DAO (0,75 pontos)<br />
  3) Completude (Implementação das demais funcionalidades) (0,5 pontos)
  4) Organização e padronização do código fonte (Pacotes, Tabulação, Atributos, Métodos, Comentários) (1,0 pontos)
  5) Postar projeto no Github. (0,5 pontos)
