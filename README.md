@@ -3,12 +3,12 @@
 <h3>Universidade do Sul de Santa Catarina - UNISUL</h3>
 <h3>Unidade Curricular: Programação de Soluções Computacionais</h3>
 <h3>Professores:</h3>
-  <h3>Osmar de Oliveira Braz Júnior</h3>
-  <h3>Richard Henrique de Souza</h3>
-  <h3>Luciano Figueiredo Coelho</h3>
-  <h3>Júlio Cesar Junior</h3>
+<h3>  Osmar de Oliveira Braz Júnior</h3>
+<h3>  Richard Henrique de Souza</h3>
+<h3>  Luciano Figueiredo Coelho</h3>
+<h3>  Júlio Cesar Junior</h3>
   
-   <h1>A3 – Desempenho de compreensão</h1>
+   <h2>A3 – Desempenho de compreensão</h2>
 
 Meta de compreensão relacionada: <b>Analisar uma situação problema, interpretar e propor soluções
 utilizando linguagens e técnicas de programação.</b>
