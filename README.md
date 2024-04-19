@@ -46,11 +46,11 @@ Devem constar do trabalho escrito pelo menos os seguintes tópicos:
   
 - Introdução
 - Desenvolvimento
--  ● Descrição do ambiente de desenvolvimento<br />
-   ● Funcionalidades implementadas<br />
-   ● Telas e suas descrições<br />
-   ● Script para criação do banco de dados<br />
-   ● Link do projeto no Github<br />
+ -  Descrição do ambiente de desenvolvimento<br />
+    Funcionalidades implementadas<br />
+    Telas e suas descrições<br />
+    Script para criação do banco de dados<br />
+    Link do projeto no Github<br />
 - Conclusão
 
  Avaliação da implementação irá considerar os seguintes requisitos e sua execução:
