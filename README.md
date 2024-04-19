@@ -2,11 +2,11 @@
  
 <h3>Universidade do Sul de Santa Catarina - UNISUL</h3>
 Unidade Curricular: Programação de Soluções Computacionais
-<p>Professores:
-  Osmar de Oliveira Braz Júnior
-  Richard Henrique de Souza
-  Luciano Figueiredo Coelho
-  Júlio Cesar Junior
+<p>Professores:</ br>
+  Osmar de Oliveira Braz Júnior</ br>
+  Richard Henrique de Souza</ br>
+  Luciano Figueiredo Coelho</ br>
+  Júlio Cesar Junior</ br>
 </p>
   
    <h2>A3 – Desempenho de compreensão</h2>
