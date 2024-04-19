@@ -43,14 +43,16 @@ Devem constar do trabalho escrito pelo menos os seguintes tópicos:
   Devendo incluir no mínimo: Capa, Sobrecapa, Sumário, Introdução, Desenvolvimento, Conclusão
   e Referências. (0,5 pontos)
   Devem constar no escrito:<br />
-   - Introdução<br />
-   - Desenvolvimento<br />
-      ● Descrição do ambiente de desenvolvimento<br />
-      ● Funcionalidades implementadas<br />
-      ● Telas e suas descrições<br />
-      ● Script para criação do banco de dados<br />
-      ● Link do projeto no Github<br />
-   - Conclusão<br />
+  
+- Introdução
+- Desenvolvimento
+-  ● Descrição do ambiente de desenvolvimento<br />
+   ● Funcionalidades implementadas<br />
+   ● Telas e suas descrições<br />
+   ● Script para criação do banco de dados<br />
+   ● Link do projeto no Github<br />
+- Conclusão
+
  Avaliação da implementação irá considerar os seguintes requisitos e sua execução:
  1) Implementação CRUD amigos<br />
     ● Entidade (0,5 pontos)<br />
