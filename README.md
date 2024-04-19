@@ -2,11 +2,11 @@
  
 <h3>Universidade do Sul de Santa Catarina - UNISUL</h3>
 Unidade Curricular: Programação de Soluções Computacionais
-<p>Professores:</ br>
-  Osmar de Oliveira Braz Júnior</ br>
-  Richard Henrique de Souza</ br>
-  Luciano Figueiredo Coelho</ br>
-  Júlio Cesar Junior</ br>
+<p>Professores:<br />
+  Osmar de Oliveira Braz Júnior<br />
+  Richard Henrique de Souza<br />
+  Luciano Figueiredo Coelho<br />
+  Júlio Cesar Junior<br />
 </p>
   
    <h2>A3 – Desempenho de compreensão</h2>
@@ -20,11 +20,7 @@ telas adicionais, como empréstimo de ferramentas e relatórios, pontos adiciona
 equipe. O trabalho será realizado em grupo até 5 alunos (não será aceito trabalho individual). A escolha
 dos grupos é de responsabilidade dos alunos.
 
-Download do software modelo:
-• Prototipo_exemplo.rar
-• Como_instalar_prototipo_A3_programacao.mp4
-
-<h3><s><b>1. Contextualização</b></s></h3>
+<h3><u><b>1. Contextualização</b></u></h3>
 O tema do trabalho é o desenvolvimento de um projeto de software atendendo uma necessidade
 fictícia do cotidiano.
 No churrasco de família, seu tio-avô, lhe pediu um software para gerenciar o empréstimo de
@@ -37,40 +33,40 @@ querer outro relatório dos empréstimos ativos e de todos os empréstimos reali
 gostaria de saber quem é que fez mais empréstimos e se tem alguém que nunca devolveu, inclusive, a cada
 novo empréstimo ele gostaria de o sistema diga se o amigo ainda tem algo que não devolveu.
 
-<h3><s><b>2. Objetivos</b></s></h3>
+<h3><u><b>2. Objetivos</b></u></h3>
 ● Desenvolver a habilidade de projetar e desenvolver sistemas utilizando modelos, métodos e técnicas
 de engenharia de software.
 
-<h3><s><b>3. Escrito e implementação (7,0 pontos)</b></s></h3>
+<h3><u><b>3. Escrito e implementação (7,0 pontos)</b></u></h3>
 Devem constar do trabalho escrito pelo menos os seguintes tópicos:
   1) Atender as normas do caderno de metodologia da UNISUL modelo TCC, disponível em: https://www.unisul.br/orientacao-para-trabalhos-academicos/
   Devendo incluir no mínimo: Capa, Sobrecapa, Sumário, Introdução, Desenvolvimento, Conclusão
   e Referências. (0,5 pontos)
-  Devem constar no escrito:
-   - Introdução
-   - Desenvolvimento
-     Descrição do ambiente de desenvolvimento
-     Funcionalidades implementadas
-     Telas e suas descrições
-     Script para criação do banco de dados
-     Link do projeto no Github
-   - Conclusão
+  Devem constar no escrito:<br />
+   - Introdução<br />
+   - Desenvolvimento<br />
+     Descrição do ambiente de desenvolvimento<br />
+     Funcionalidades implementadas<br />
+     Telas e suas descrições<br />
+     Script para criação do banco de dados<br />
+     Link do projeto no Github<br />
+   - Conclusão<br />
  Avaliação da implementação irá considerar os seguintes requisitos e sua execução:
- 1) Implementação CRUD amigos
-   Entidade (0,5 pontos)
-   Controle (0,5 pontos)
-   Visualização (0,5 pontos)
-   DAO (0,75 pontos)
- 2) Implementação CRUD ferramentas
-   Entidade (0,5 pontos)
-   Controle (0,5 pontos)
-   Visualização (0,5 pontos)
-   DAO (0,75 pontos)
+ 1) Implementação CRUD amigos<br />
+   Entidade (0,5 pontos)<br />
+   Controle (0,5 pontos)<br />
+   Visualização (0,5 pontos)<br />
+   DAO (0,75 pontos)<br />
+ 2) Implementação CRUD ferramentas<br />
+   Entidade (0,5 pontos)<br />
+   Controle (0,5 pontos)<br />
+   Visualização (0,5 pontos)<br />
+   DAO (0,75 pontos)<br />
  3) Completude (Implementação das demais funcionalidades) (0,5 pontos)
  4) Organização e padronização do código fonte (Pacotes, Tabulação, Atributos, Métodos, Comentários) (1,0 pontos)
  5) Postar projeto no Github. (0,5 pontos)
  
-<h3><s><b>4. Apresentação (3,0 pontos)</b></s></h3>
+<h3><u><b>4. Apresentação (3,0 pontos)</b></u></h3>
  Todas as equipes devem gravar um vídeo da apresentação do trabalho. Todos os integrantes devem
 se apresentar e aparecer no vídeo e realizar a apresentação do trabalho. Deve ser utilizado algum software
 de apresentação tipo PowerPoint. Todos os grupos têm o tempo médio é de 10 minutos (variação de 2
@@ -91,7 +87,7 @@ estabelecido (1,5 pontos). O vídeo pode ser editado para unir as falas dos inte
 Socialização: O vídeo deve ser postado no Youtube como não listado e o link enviado ao professor
 juntamente com a postagem do trabalho para sua socialização.
 
-<h3><s><b>5. Artefatos a serem entregues</b></s></h3>
+<h3><u><b>5. Artefatos a serem entregues</b></u></h3>
  Todos os alunos devem fazer a entrega dos artefatos do trabalho. Será descontando 0,5 pontos se o aluno
 não fizer a postagem no prazo e local especificado(ulife). Os artefatos a serem entregues são.
  ● Arquivo do trabalho (PDF).
@@ -102,7 +98,7 @@ Compacte os arquivos a serem enviados em um arquivo .zip ou .rar para realizar u
 Os alunos e o grupo são responsáveis pela correta postagem do arquivo da A3 no sistema. Após o prazo
 final não é possível fazer o envio ou correções.
 
-<h3><s><b>6. Datas</b></s></h3>
+<h3><u><b>6. Datas</b></u></h3>
  ● Até o dia 03/05/2024 o nome dos integrantes da equipe deve ser postado no Ulife na seção conteúdo
 no item “A3 - Grupo”.
 
@@ -111,18 +107,18 @@ Postagem do trabalho”.
 
  ● Socialização das apresentações dia 14 e 28/06/2024 (todas feitas de forma digital).
  
-<h3><s><b>7. Pontuação extra (1,0)</b></s></h3>
+<h3><u><b>7. Pontuação extra (1,0)</b></u></h3>
  O envio dos certificados de realização dos cursos da Oracle dará direito a 1,0 ponto extra na nota
 final da A3 para o aluno que realizou o curso. Os alunos que desejarem deve se inscrever na Oracle
 Academy(https://academy.oracle.com/pt-br/) e se matricular nos cursos.
 
-Lista dos cursos e sua pontuação:
- 1 - Java Foundations - (0,5 pontos)
- 2 - Java Fundamentals - (0,5 pontos)
+Lista dos cursos e sua pontuação:<br />
+ 1 - Java Foundations - (0,5 pontos)<br />
+ 2 - Java Fundamentals - (0,5 pontos)<br />
 
 Os certificados devem ser enviados juntamente com o arquivo do trabalho.
 
-<h3><s><b>8. Acompanhamento</b></s></h3>
+<h3><u><b>8. Acompanhamento</b></u></h3>
 Os professores estabelecerão alguns momentos, durante as aulas, para orientação sobre o
 trabalho e acompanhar o andamento.
 Boa Atividade!
