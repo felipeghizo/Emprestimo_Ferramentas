@@ -10,6 +10,7 @@ Unidade Curricular: Programação de Soluções Computacionais<br /><br />
 </p>
 <p>Alunos:<br />
   Felipe de Oliveira Ghizoni<br />
+  Gustavo Cesar Tambosi<br />
 </p>
   
    <h2>A3 – Desempenho de compreensão</h2>
