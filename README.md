@@ -1,7 +1,7 @@
 # A3-Programacao
  
 <h3>Universidade do Sul de Santa Catarina - UNISUL</h3>
-Unidade Curricular: Programação de Soluções Computacionais<br />
+Unidade Curricular: Programação de Soluções Computacionais<br /><br />
 <p>Professores:<br />
   Osmar de Oliveira Braz Júnior<br />
   Richard Henrique de Souza<br />
