@@ -8,6 +8,10 @@ Unidade Curricular: Programação de Soluções Computacionais
   Luciano Figueiredo Coelho<br />
   Júlio Cesar Junior<br />
 </p>
+<br />
+<p>Alunos:<br />
+  Felipe de Oliveira Ghizoni<br />
+</p>
   232626.6
    <h2>A3 – Desempenho de compreensão</h2>
 
