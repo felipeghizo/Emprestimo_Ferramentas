@@ -55,7 +55,7 @@ Devem constar do trabalho escrito pelo menos os seguintes tópicos:
   Funcionalidades implementadas<br />
   Telas e suas descrições<br />
   Script para criação do banco de dados<br />
-  Link do projeto no Github https://github.com/felipeghizo/A3-Programacao/invitations<br />
+  Link do projeto no Github https://animaedu-my.sharepoint.com/:w:/g/personal/1072321015_ulife_com_br/EbBFcPwmuhVFhcLD03u1gq8BJRhzL63eY5scbbryjPWFNw?e=QUuGnn<br />
 - Conclusão
 
  Avaliação da implementação irá considerar os seguintes requisitos e sua execução:
