@@ -11,7 +11,7 @@ Unidade Curricular: Programação de Soluções Computacionais<br /><br />
 <p>Alunos:<br />
   Felipe de Oliveira Ghizoni<br />
   Gustavo Cesar Tambosi<br />
-  Munich Effting /> 
+  Munich Effting<br /> 
 </p>
   
    <h2>A3 – Desempenho de compreensão</h2>
