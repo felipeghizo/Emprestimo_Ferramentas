@@ -40,5 +40,5 @@ public class Ferramenta{
         this.Custo = custo;
     }
 
-    // Metodos a serem implementados
+    
 }
