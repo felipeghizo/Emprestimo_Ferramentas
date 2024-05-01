@@ -10,12 +10,6 @@ public class Emprestimo extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ListaFerramentas() {
-        initComponents();
-        ferramentas = new ArrayList<>();
-        model = new DefaultListModel<>();
-        jList1.setModel(model);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

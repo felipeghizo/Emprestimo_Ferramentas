@@ -254,9 +254,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
+        
+        // Obtendo a senha como uma matriz de caracteres
+        char[] senhaChar = Password.getPassword();
+        // Convertendo a matriz de caracteres em uma string
+        String senha = new String(senhaChar);
+        
         MainLogin mainLogin = new MainLogin();
-        if (mainLogin.checkPassword()){
+        if (mainLogin.checkPassword(senha)){
             Menu menu = new Menu();
+            this.setVisible(false);
             menu.setVisible(true);
         }else{
             SenhaIncorreta.setVisible(true);

@@ -7,7 +7,7 @@ public class Principal {
 
     public static void main(String[] args) {
         String loginCheck = "banco de dados";
-        if (loginCheck.compareTo("basdasdasd") == 1){
+        if (loginCheck.compareTo("banco de dados") != 0){
             Primeiro_Acesso primeiro_acesso = new Primeiro_Acesso();
             primeiro_acesso.setVisible(true);
         }

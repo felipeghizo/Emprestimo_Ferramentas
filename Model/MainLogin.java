@@ -36,7 +36,7 @@ public class MainLogin {
         }
     }
     
-    public boolean checkPassword(){
-        return this.password.compareTo("Banco de dados") == 0;
+    public boolean checkPassword(String senha){
+        return senha.compareTo("admin123") == 0;
     }
 }

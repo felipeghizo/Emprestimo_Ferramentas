@@ -161,7 +161,6 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
            OkMesage.setVisible(true);
            Seguir.setVisible(true);
         }else{
-            System.out.println(Password.getPassword());
             ErrorMesage.setVisible(true); 
         }
     }//GEN-LAST:event_SalvarActionPerformed
