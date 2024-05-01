@@ -44,12 +44,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <Component id="Salvar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Seguir" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="Password" min="-2" max="-2" attributes="0"/>
                                   <Component id="ErrorMesage" min="-2" max="-2" attributes="0"/>
                                   <Component id="PasswordConfirmation" min="-2" max="-2" attributes="0"/>
+                                  <Component id="OkMesage" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -81,7 +83,12 @@
                   <Component id="ErrorMesage" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="OkMesage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Seguir" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="Fechar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
           </Group>
@@ -130,12 +137,15 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="Password">
       <Properties>
-        <Property name="text" type="java.lang.String" value="asd"/>
+        <Property name="text" type="java.lang.String" value="abc"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="PasswordConfirmation">
       <Properties>
-        <Property name="text" type="java.lang.String" value="asdasdasd"/>
+        <Property name="text" type="java.lang.String" value="abc"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Fechar">
@@ -150,6 +160,16 @@
     <Component class="javax.swing.JLabel" name="ErrorMesage">
       <Properties>
         <Property name="text" type="java.lang.String" value="Senhas n&#xe3;o s&#xe3;o iguais!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="OkMesage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sucesso!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="Seguir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Seguir"/>
       </Properties>
     </Component>
   </SubComponents>

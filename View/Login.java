@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
+import Model.MainLogin;
 
-/**
- *
- * @author Pichau
- */
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -15,6 +8,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        SenhaIncorreta.setVisible(false);
     }
 
     /**
@@ -44,10 +38,11 @@ public class Login extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         l_numerosorteado2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        Entrar = new javax.swing.JButton();
+        Esqueci_senha = new javax.swing.JButton();
+        Password = new javax.swing.JPasswordField();
         Fechar = new javax.swing.JButton();
+        SenhaIncorreta = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,16 +156,21 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Senha:");
         jLabel5.setToolTipText("");
 
-        jButton2.setText("Entrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Entrar.setText("Entrar");
+        Entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                EntrarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Esqueci a senha");
+        Esqueci_senha.setText("Esqueci a senha");
+        Esqueci_senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Esqueci_senhaActionPerformed(evt);
+            }
+        });
 
-        jPasswordField1.setText("jPasswordField1");
+        Password.setText("jPasswordField1");
 
         Fechar.setText("Fechar");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,6 +178,8 @@ public class Login extends javax.swing.JFrame {
                 FecharMouseClicked(evt);
             }
         });
+
+        SenhaIncorreta.setText("Senha incorreta!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,13 +195,16 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(168, 168, 168)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Esqueci_senha)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(SenhaIncorreta))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton2))))
+                                        .addComponent(Entrar))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addComponent(Fechar)))
@@ -214,10 +219,12 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Entrar)
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Esqueci_senha)
+                    .addComponent(SenhaIncorreta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(Fechar)
                 .addGap(20, 20, 20))
@@ -246,13 +253,23 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
+        MainLogin mainLogin = new MainLogin();
+        if (mainLogin.checkPassword()){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+        }else{
+            SenhaIncorreta.setVisible(true);
+        } 
+    }//GEN-LAST:event_EntrarActionPerformed
 
     private void FecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseClicked
         System.exit(0);
     }//GEN-LAST:event_FecharMouseClicked
+
+    private void Esqueci_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Esqueci_senhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Esqueci_senhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,21 +308,22 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Entrar;
+    private javax.swing.JButton Esqueci_senha;
     private javax.swing.JButton Fechar;
+    private javax.swing.JPasswordField Password;
+    private javax.swing.JLabel SenhaIncorreta;
     private javax.swing.JTextArea a_saida;
     private javax.swing.JButton b_novo;
     private javax.swing.JButton b_sortear;
     private javax.swing.JTextField c_entrada;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

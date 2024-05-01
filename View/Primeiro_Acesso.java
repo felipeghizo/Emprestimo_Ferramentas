@@ -1,11 +1,13 @@
 package View;
-import Model.Login;
+import Model.MainLogin;
 
 public class Primeiro_Acesso extends javax.swing.JFrame {
 
     public Primeiro_Acesso() {
         initComponents();
         ErrorMesage.setVisible(false);
+        OkMesage.setVisible(false);
+        Seguir.setVisible(false);
     }
 
     /**
@@ -26,6 +28,8 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         PasswordConfirmation = new javax.swing.JPasswordField();
         Fechar = new javax.swing.JButton();
         ErrorMesage = new javax.swing.JLabel();
+        OkMesage = new javax.swing.JLabel();
+        Seguir = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,9 +53,14 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
             }
         });
 
-        Password.setText("asd");
+        Password.setText("abc");
+        Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordActionPerformed(evt);
+            }
+        });
 
-        PasswordConfirmation.setText("asdasdasd");
+        PasswordConfirmation.setText("abc");
 
         Fechar.setText("Fechar");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,6 +75,10 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         });
 
         ErrorMesage.setText("Senhas não são iguais!");
+
+        OkMesage.setText("Sucesso!");
+
+        Seguir.setText("Seguir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,12 +101,14 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(Salvar))
+                                    .addComponent(Salvar)
+                                    .addComponent(Seguir))
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ErrorMesage)
-                                    .addComponent(PasswordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(PasswordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(OkMesage))))))
                 .addContainerGap(227, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,7 +130,11 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ErrorMesage)
                     .addComponent(Salvar))
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(OkMesage)
+                    .addComponent(Seguir))
+                .addGap(23, 23, 23)
                 .addComponent(Fechar)
                 .addGap(17, 17, 17))
         );
@@ -124,8 +143,16 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-       Login login = new Login();
-       login.Password(Password.toString(), PasswordConfirmation.toString());
+       MainLogin login = new MainLogin();
+       if (login.Password(Password.toString(), PasswordConfirmation.toString())){
+           System.out.println(Password.toString());
+           ErrorMesage.setVisible(false);
+           OkMesage.setVisible(true);
+           Seguir.setVisible(true);
+       }else{
+          System.out.println(Password.toString());
+          ErrorMesage.setVisible(true); 
+       }
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void FecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseClicked
@@ -136,9 +163,10 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_FecharActionPerformed
 
-    public void MostraMensagemErro(){
-        ErrorMesage.setVisible(true);
-    }
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,9 +207,11 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorMesage;
     private javax.swing.JButton Fechar;
+    private javax.swing.JLabel OkMesage;
     private javax.swing.JPasswordField Password;
     private javax.swing.JPasswordField PasswordConfirmation;
     private javax.swing.JButton Salvar;
+    private javax.swing.JToggleButton Seguir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
