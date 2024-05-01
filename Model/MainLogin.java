@@ -27,9 +27,12 @@ public class MainLogin {
     public boolean Password(String password, String PasswordConfirmation){
         if(password.compareTo(PasswordConfirmation) == 0){
             this.setPassword(password);
+            System.out.println("foi");
             return true;
         }else{
+            System.out.println("nao foi");
             return false;
+
         }
     }
     

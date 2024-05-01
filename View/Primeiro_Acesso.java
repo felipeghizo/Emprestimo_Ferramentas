@@ -79,6 +79,11 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         OkMesage.setText("Sucesso!");
 
         Seguir.setText("Seguir");
+        Seguir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeguirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,16 +148,22 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-       MainLogin login = new MainLogin();
-       if (login.Password(Password.toString(), PasswordConfirmation.toString())){
-           System.out.println(Password.toString());
+        // Obtendo a senha como uma matriz de caracteres
+        char[] senhaChar = Password.getPassword();
+        char[] senhaConfChar = PasswordConfirmation.getPassword();
+        // Convertendo a matriz de caracteres em uma string
+        String senha = new String(senhaChar);
+        String senhaConf = new String(senhaConfChar);
+       
+        MainLogin login = new MainLogin();
+        if (login.Password(senha, senhaConf)){
            ErrorMesage.setVisible(false);
            OkMesage.setVisible(true);
            Seguir.setVisible(true);
-       }else{
-          System.out.println(Password.toString());
-          ErrorMesage.setVisible(true); 
-       }
+        }else{
+            System.out.println(Password.getPassword());
+            ErrorMesage.setVisible(true); 
+        }
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void FecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseClicked
@@ -166,6 +177,12 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordActionPerformed
+
+    private void SeguirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguirActionPerformed
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_SeguirActionPerformed
 
     /**
      * @param args the command line arguments
