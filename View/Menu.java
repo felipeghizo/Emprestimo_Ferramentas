@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- *
- * @author Pichau
- */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
     public Menu() {
         initComponents();
+        atualizarData();  // Chamando o método para exibir a data inicial
     }
 
     /**
@@ -40,7 +32,7 @@ public class Menu extends javax.swing.JFrame {
         Ferramentas = new javax.swing.JButton();
         Emprestimos = new javax.swing.JButton();
         Amigos = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Data = new javax.swing.JLabel();
         Fechar = new javax.swing.JButton();
         Relatorio = new javax.swing.JButton();
 
@@ -109,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Data");
+        Data.setText("Data");
 
         Fechar.setText("Fechar");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,7 +131,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(Fechar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
+                        .addComponent(Data))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(Amigos, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +157,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(Data)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Fechar)
@@ -187,24 +179,28 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    // Método para acessar a aba de amigos:
     private void AmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmigosActionPerformed
         Amigo amigo = new Amigo();
         amigo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AmigosActionPerformed
 
+    // Método para acessar a aba de ferramentas:
     private void FerramentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FerramentasActionPerformed
         Ferramenta ferramenta = new Ferramenta();
         ferramenta.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_FerramentasActionPerformed
 
+    // Método para acessar a aba empréstimo:
     private void EmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmprestimosActionPerformed
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EmprestimosActionPerformed
-
+    
+    // Método para fechar o programa:
     private void FecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseClicked
         System.exit(0);
     }//GEN-LAST:event_FecharMouseClicked
@@ -214,7 +210,21 @@ public class Menu extends javax.swing.JFrame {
         relatorio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RelatorioMouseClicked
+    
+    // Método para atualizar a data
+    private void atualizarData() {
+        // Obtendo a data atual do dispositivo local
+        Date dataAtual = new Date();
 
+        // Formatando a data para exibição
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = formatoData.format(dataAtual);
+
+        // Exibindo a data no JLabel
+        Data.setText("Data: " + dataFormatada);
+        Data.setBounds(10, 10, 200, 20); // Definindo a posição e tamanho do JLabel
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -252,12 +262,12 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Amigos;
+    private javax.swing.JLabel Data;
     private javax.swing.JButton Emprestimos;
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Ferramentas;
     private javax.swing.JButton Relatorio;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
