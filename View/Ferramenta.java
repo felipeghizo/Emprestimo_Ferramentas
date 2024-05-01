@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
 
-/**
- *
- * @author Pichau
- */
-public class Ferramenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ferramenta
-     */
+public class Ferramenta extends javax.swing.JFrame {
+    
+    
+
+   
     public Ferramenta() {
         initComponents();
     }
@@ -289,8 +283,8 @@ public class Ferramenta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(9, Short.MAX_VALUE)
-                .addComponent(l_numerosorteado3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(l_numerosorteado3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -354,9 +348,7 @@ public class Ferramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void RelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelatorioMouseClicked
-        Relatorio relatorio = new Relatorio();
-        relatorio.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_RelatorioMouseClicked
 
     private void RelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioActionPerformed

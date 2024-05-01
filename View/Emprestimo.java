@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
-/**
- *
- * @author Pichau
- */
 public class Emprestimo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Emprestimo
-     */
+    private ArrayList<Ferramenta> ferramentas;
+    private DefaultListModel<String> model;
     public Emprestimo() {
         initComponents();
+    }
+    
+    public ListaFerramentas() {
+        initComponents();
+        ferramentas = new ArrayList<>();
+        model = new DefaultListModel<>();
+        jList1.setModel(model);
     }
 
     /**
