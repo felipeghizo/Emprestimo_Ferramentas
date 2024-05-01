@@ -30,6 +30,7 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         ErrorMesage = new javax.swing.JLabel();
         OkMesage = new javax.swing.JLabel();
         Seguir = new javax.swing.JToggleButton();
+        ShowPassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,14 +54,11 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
             }
         });
 
-        Password.setText("abc");
         Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordActionPerformed(evt);
             }
         });
-
-        PasswordConfirmation.setText("abc");
 
         Fechar.setText("Fechar");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,6 +80,13 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         Seguir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeguirActionPerformed(evt);
+            }
+        });
+
+        ShowPassword.setText("Mostrar Senhas");
+        ShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPasswordActionPerformed(evt);
             }
         });
 
@@ -108,13 +113,20 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(Salvar)
                                     .addComponent(Seguir))
-                                .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ErrorMesage)
-                                    .addComponent(PasswordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(OkMesage))))))
-                .addContainerGap(227, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ErrorMesage)
+                                            .addComponent(OkMesage)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                            .addComponent(PasswordConfirmation))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ShowPassword)))))
+                .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +142,8 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(PasswordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ErrorMesage)
@@ -183,6 +196,16 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_SeguirActionPerformed
 
+    private void ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordActionPerformed
+        if(ShowPassword.isSelected()){
+            Password.setEchoChar((char)0);
+            PasswordConfirmation.setEchoChar((char)0);
+        }else{
+            Password.setEchoChar('*');
+            PasswordConfirmation.setEchoChar('*');
+        }
+    }//GEN-LAST:event_ShowPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +251,7 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
     private javax.swing.JPasswordField PasswordConfirmation;
     private javax.swing.JButton Salvar;
     private javax.swing.JToggleButton Seguir;
+    private javax.swing.JCheckBox ShowPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

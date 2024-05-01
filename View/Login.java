@@ -43,6 +43,7 @@ public class Login extends javax.swing.JFrame {
         Password = new javax.swing.JPasswordField();
         Fechar = new javax.swing.JButton();
         SenhaIncorreta = new javax.swing.JLabel();
+        ShowPassword = new javax.swing.JCheckBox();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -170,8 +171,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        Password.setText("jPasswordField1");
-
         Fechar.setText("Fechar");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,6 +179,13 @@ public class Login extends javax.swing.JFrame {
         });
 
         SenhaIncorreta.setText("Senha incorreta!");
+
+        ShowPassword.setText("Mostrar senha");
+        ShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,15 +202,17 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(168, 168, 168)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Esqueci_senha)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(SenhaIncorreta))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(18, 18, 18)
-                                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Entrar))))
+                                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Entrar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Esqueci_senha)
+                                            .addComponent(ShowPassword))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(SenhaIncorreta))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addComponent(Fechar)))
@@ -223,9 +231,11 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Esqueci_senha)
+                    .addComponent(ShowPassword)
                     .addComponent(SenhaIncorreta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Esqueci_senha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(Fechar)
                 .addGap(20, 20, 20))
         );
@@ -278,6 +288,14 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Esqueci_senhaActionPerformed
 
+    private void ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordActionPerformed
+        if(ShowPassword.isSelected()){
+            Password.setEchoChar((char)0);
+        }else{
+            Password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_ShowPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,6 +338,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton Fechar;
     private javax.swing.JPasswordField Password;
     private javax.swing.JLabel SenhaIncorreta;
+    private javax.swing.JCheckBox ShowPassword;
     private javax.swing.JTextArea a_saida;
     private javax.swing.JButton b_novo;
     private javax.swing.JButton b_sortear;
