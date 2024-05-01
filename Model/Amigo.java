@@ -10,13 +10,13 @@ public class Amigo{
     public Amigo(){
         this("", "");
     }
-    // Construtor 
+    // Construtor passando parametros
     public Amigo(String Nome, String Telefone){
         this.Nome = Nome;
         this.Telefone = Telefone;
     }
 
-    // Getters 
+    // Geters 
     public String getNome(){
         return this.Nome;
     }
@@ -24,13 +24,11 @@ public class Amigo{
         return this.Telefone;
     }
 
-    // Setters
+    // Seters
     private void setNome(String nome){
         this.Nome = nome;
     }
     private void setTelefone(String telefone){
         this.Telefone = telefone;
     }
-
-    // Metodos a serem implementados
 }
