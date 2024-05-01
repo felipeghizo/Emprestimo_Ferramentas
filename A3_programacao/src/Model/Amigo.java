@@ -10,7 +10,7 @@ public class Amigo{
     public Amigo(){
         this("", "");
     }
-    // Construtor a
+    // Construtor 
     public Amigo(String Nome, String Telefone){
         this.Nome = Nome;
         this.Telefone = Telefone;
