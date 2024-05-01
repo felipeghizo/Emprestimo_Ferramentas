@@ -1,14 +1,19 @@
-/*
 package Principal;
 
-import View.TelaPrincipal;
+import View.Primeiro_Acesso;
+import View.Login;
 
 public class Principal {
 
     public static void main(String[] args) {
-        TelaPrincipal objetotela = new TelaPrincipal();
-        objetotela.setVisible(true);
+        String loginCheck = "banco de dados";
+        if (loginCheck.compareTo("asdasdasd") == 1){
+            Primeiro_Acesso primeiro_acesso = new Primeiro_Acesso();
+            primeiro_acesso.setVisible(true);
+        }
+        else{
+            Login login = new Login();
+            login.setVisible(true);
+        }
     }
-    
 }
-*/
