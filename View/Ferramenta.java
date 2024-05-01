@@ -48,7 +48,7 @@ public class Ferramenta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jButton18 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        Relatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,7 +219,17 @@ public class Ferramenta extends javax.swing.JFrame {
             }
         });
 
-        jButton17.setText("Relatório");
+        Relatorio.setText("Relatório");
+        Relatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RelatorioMouseClicked(evt);
+            }
+        });
+        Relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelatorioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,14 +244,14 @@ public class Ferramenta extends javax.swing.JFrame {
                         .addComponent(jLabel8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(jButton17)))
+                        .addComponent(Relatorio)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton17)
+                .addComponent(Relatorio)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -343,6 +353,16 @@ public class Ferramenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void RelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelatorioMouseClicked
+        Relatorio relatorio = new Relatorio();
+        relatorio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_RelatorioMouseClicked
+
+    private void RelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelatorioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -380,12 +400,12 @@ public class Ferramenta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Fechar;
+    private javax.swing.JButton Relatorio;
     private javax.swing.JButton Voltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
