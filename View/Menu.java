@@ -5,7 +5,10 @@ import java.util.Date;
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
+        // Configurações do JFrame
+        setTitle("Menu");
         initComponents();
+        this.setLocationRelativeTo(null);
         atualizarData();  // Chamando o método para exibir a data inicial
     }
 
@@ -102,7 +105,7 @@ public class Menu extends javax.swing.JFrame {
 
         Data.setText("Data");
 
-        Fechar.setText("Fechar");
+        Fechar.setText("Sair");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FecharMouseClicked(evt);

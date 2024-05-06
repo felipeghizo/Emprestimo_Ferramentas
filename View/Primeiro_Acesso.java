@@ -4,7 +4,10 @@ import Model.MainLogin;
 public class Primeiro_Acesso extends javax.swing.JFrame {
 
     public Primeiro_Acesso() {
+        // Configurações do JFrame
+        setTitle("Primeiro acesso");
         initComponents();
+        this.setLocationRelativeTo(null); // Centraliza o JFrame na tela
         ErrorMesage.setVisible(false);
         OkMesage.setVisible(false);
         Seguir.setVisible(false);
@@ -60,7 +63,7 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
             }
         });
 
-        Fechar.setText("Fechar");
+        Fechar.setText("Sair");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FecharMouseClicked(evt);

@@ -1,14 +1,14 @@
-
 package View;
+import javax.swing.JOptionPane;
 
 
 public class Ferramenta extends javax.swing.JFrame {
     
-    
-
-   
     public Ferramenta() {
+        // Configurações do JFrame
+        this.setTitle("Ferramenta");
         initComponents();
+        this.setLocationRelativeTo(null); // Centraliza o JFrame na tela
     }
 
     /**
@@ -193,10 +193,15 @@ public class Ferramenta extends javax.swing.JFrame {
 
         jLabel1.setText("Adicionar ferramenta:");
 
-        Fechar.setText("Fechar");
+        Fechar.setText("Sair");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FecharMouseClicked(evt);
+            }
+        });
+        Fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FecharActionPerformed(evt);
             }
         });
 
@@ -213,7 +218,7 @@ public class Ferramenta extends javax.swing.JFrame {
             }
         });
 
-        Relatorio.setText("Relatório");
+        Relatorio.setText("Gerar relatório de ferramentas");
         Relatorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RelatorioMouseClicked(evt);
@@ -230,23 +235,21 @@ public class Ferramenta extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jButton18)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(Relatorio)))
+                    .addComponent(Relatorio))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(Relatorio)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jButton18))
@@ -328,6 +331,21 @@ public class Ferramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void FecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseClicked
+        JOptionPane optionPane = new JOptionPane("Salvando alterações...", JOptionPane.INFORMATION_MESSAGE);
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(3000); // Aguarda 3 segundos
+                optionPane.setVisible(false); // Fecha o JOptionPane após 3 segundos
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+        
+        // Cria um JFrame temporário para exibir o JOptionPane
+        JOptionPane.showMessageDialog(null, optionPane);
+        
+
         System.exit(0);
     }//GEN-LAST:event_FecharMouseClicked
 
@@ -352,8 +370,15 @@ public class Ferramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_RelatorioMouseClicked
 
     private void RelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Ferramenta     |     Custo\n"
+                + "Martelo     |     R$ 10\n"+ "Martelo     |     R$ 10\n"+ 
+                "Martelo     |     R$ 10\n"+ "Martelo     |     R$ 10\n"+ 
+                "Martelo     |     R$ 10\n"+ "Martelo     |     R$ 10\n");
     }//GEN-LAST:event_RelatorioActionPerformed
+
+    private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
+        
+    }//GEN-LAST:event_FecharActionPerformed
 
     /**
      * @param args the command line arguments

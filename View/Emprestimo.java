@@ -1,13 +1,10 @@
 package View;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+
 
 public class Emprestimo extends javax.swing.JFrame {
-
-    private ArrayList<Ferramenta> ferramentas;
-    private DefaultListModel<String> model;
     public Emprestimo() {
         initComponents();
+        this.setLocationRelativeTo(null); // Centraliza o JFrame na tela
     }
     
 

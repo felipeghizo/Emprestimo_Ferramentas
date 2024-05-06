@@ -7,7 +7,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Primeiro_acesso
      */
     public Login() {
+        // Configurações do JFrame
+        setTitle("Login");
         initComponents();
+        this.setLocationRelativeTo(null); // Centraliza o JFrame na tela
         SenhaIncorreta.setVisible(false);
     }
 
@@ -171,10 +174,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        Fechar.setText("Fechar");
+        Fechar.setText("Sair");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FecharMouseClicked(evt);
+            }
+        });
+        Fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FecharActionPerformed(evt);
             }
         });
 
@@ -295,6 +303,10 @@ public class Login extends javax.swing.JFrame {
             Password.setEchoChar('*');
         }
     }//GEN-LAST:event_ShowPasswordActionPerformed
+
+    private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FecharActionPerformed
 
     /**
      * @param args the command line arguments
