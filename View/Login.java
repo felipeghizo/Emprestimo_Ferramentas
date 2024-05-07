@@ -9,6 +9,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         // Configurações do JFrame
         setTitle("Login");
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null); // Centraliza o JFrame na tela
         SenhaIncorreta.setVisible(false);
@@ -39,14 +40,17 @@ public class Login extends javax.swing.JFrame {
         b_sortear = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        Fechar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         l_numerosorteado2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Entrar = new javax.swing.JButton();
         Esqueci_senha = new javax.swing.JButton();
         Password = new javax.swing.JPasswordField();
-        Fechar = new javax.swing.JButton();
-        SenhaIncorreta = new javax.swing.JLabel();
         ShowPassword = new javax.swing.JCheckBox();
+        Entrar = new javax.swing.JButton();
+        SenhaIncorreta = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,31 +154,16 @@ public class Login extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 153));
+        setBounds(new java.awt.Rectangle(100, 100, 122, 122));
 
-        l_numerosorteado2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        l_numerosorteado2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        l_numerosorteado2.setText("Olá tio Richard, Seja bem-vindo!");
-        l_numerosorteado2.setPreferredSize(new java.awt.Dimension(20, 26));
+        jPanel1.setBackground(new java.awt.Color(255, 149, 0));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Senha:");
-        jLabel5.setToolTipText("");
-
-        Entrar.setText("Entrar");
-        Entrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EntrarActionPerformed(evt);
-            }
-        });
-
-        Esqueci_senha.setText("Esqueci a senha");
-        Esqueci_senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Esqueci_senhaActionPerformed(evt);
-            }
-        });
-
-        Fechar.setText("Sair");
+        Fechar.setBackground(new java.awt.Color(255, 149, 0));
+        Fechar.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        Fechar.setForeground(new java.awt.Color(255, 255, 255));
+        Fechar.setText(" X ");
+        Fechar.setBorder(null);
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FecharMouseClicked(evt);
@@ -186,8 +175,31 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        SenhaIncorreta.setText("Senha incorreta!");
+        jPanel2.setBackground(new java.awt.Color(39, 56, 75));
 
+        l_numerosorteado2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        l_numerosorteado2.setForeground(new java.awt.Color(255, 255, 255));
+        l_numerosorteado2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l_numerosorteado2.setText("Olá tio Richard, Seja bem-vindo!");
+        l_numerosorteado2.setPreferredSize(new java.awt.Dimension(20, 26));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Senha:");
+        jLabel5.setToolTipText("");
+
+        Esqueci_senha.setBackground(new java.awt.Color(107, 122, 139));
+        Esqueci_senha.setForeground(new java.awt.Color(255, 255, 255));
+        Esqueci_senha.setText("Esqueci a senha");
+        Esqueci_senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Esqueci_senhaActionPerformed(evt);
+            }
+        });
+
+        Password.setBackground(new java.awt.Color(107, 122, 139));
+
+        ShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         ShowPassword.setText("Mostrar senha");
         ShowPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,57 +207,95 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(l_numerosorteado2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(168, 168, 168)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Entrar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Esqueci_senha)
-                                            .addComponent(ShowPassword))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(SenhaIncorreta))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(Fechar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+        Entrar.setBackground(new java.awt.Color(107, 122, 139));
+        Entrar.setForeground(new java.awt.Color(255, 255, 255));
+        Entrar.setText("Entrar");
+        Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntrarActionPerformed(evt);
+            }
+        });
+
+        SenhaIncorreta.setForeground(new java.awt.Color(255, 0, 0));
+        SenhaIncorreta.setText("Senha incorreta!");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Entrar))
+                    .addComponent(Esqueci_senha)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(ShowPassword)
+                        .addGap(18, 18, 18)
+                        .addComponent(SenhaIncorreta)))
+                .addGap(133, 133, 133))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(l_numerosorteado2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(l_numerosorteado2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(l_numerosorteado2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Entrar)
-                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Entrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ShowPassword)
                     .addComponent(SenhaIncorreta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Esqueci_senha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(Fechar)
-                .addGap(20, 20, 20))
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Login");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Fechar))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(Fechar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -362,6 +412,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
