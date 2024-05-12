@@ -1,20 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-/**
- *
- * @author munic
- */
+
 public class Relatorio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Relatorio
-     */
     public Relatorio() {
         initComponents();
+        this.setLocationRelativeTo(null); // Centraliza o JFrame na tela
     }
 
     /**
@@ -48,7 +39,7 @@ public class Relatorio extends javax.swing.JFrame {
             }
         });
 
-        Fechar.setText("Fechar");
+        Fechar.setText("Sair");
         Fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FecharMouseClicked(evt);
