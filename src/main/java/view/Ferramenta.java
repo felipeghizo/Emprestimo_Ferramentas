@@ -50,6 +50,11 @@ public class Ferramenta extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(107, 122, 139));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Add ferramenta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(107, 122, 139));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,6 +229,10 @@ public class Ferramenta extends javax.swing.JFrame {
     private void VoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VoltarMouseExited
         Voltar.setBackground(orangeColor);
     }//GEN-LAST:event_VoltarMouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

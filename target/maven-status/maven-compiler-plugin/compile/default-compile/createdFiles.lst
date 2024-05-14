@@ -10,6 +10,7 @@ view\Ferramenta$2.class
 view\Menu$1.class
 view\Emprestimo$1.class
 view\Menu$7.class
+DAO\AmigoDAO.class
 view\Primeiro_Acesso$7.class
 view\Menu$3.class
 view\Menu.class
@@ -28,6 +29,7 @@ view\Login$8.class
 view\Amigo$4.class
 view\Ferramenta.class
 view\Menu$9.class
+DAO\FerramentaDAO.class
 view\Relatorio$1.class
 view\Primeiro_Acesso$1.class
 view\Emprestimo$3.class
@@ -38,11 +40,14 @@ view\Menu$6.class
 view\Amigo$1.class
 view\Ferramenta$1.class
 view\Primeiro_Acesso$5.class
+view\Ferramenta$7.class
 view\Login$4.class
 view\Relatorio.class
+DAO\EmprestimoDAO.class
 view\Emprestimo$4.class
 view\Relatorio$4.class
 view\Ferramenta$4.class
+DAO\Conexao.class
 view\Amigo$3.class
 view\Login$3.class
 view\Ferramenta$5.class
