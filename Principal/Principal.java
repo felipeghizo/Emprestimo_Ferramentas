@@ -1,7 +1,7 @@
-package Principal;
+package principal;
 
-import View.Primeiro_Acesso;
-import View.Login;
+import view.Primeiro_Acesso;
+import view.Login;
 import javax.swing.JOptionPane;
 
 public class Principal {

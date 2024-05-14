@@ -1,4 +1,4 @@
-package View;
+package view;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.Color;

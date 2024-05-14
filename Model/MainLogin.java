@@ -1,5 +1,5 @@
-package Model;
-import View.Primeiro_Acesso; 
+package model;
+import view.Primeiro_Acesso; 
 
 public class MainLogin {
     

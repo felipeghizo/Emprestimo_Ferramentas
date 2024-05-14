@@ -1,5 +1,5 @@
-package View;
-import Model.MainLogin;
+package view;
+import model.MainLogin;
 import java.awt.Color;
 
 public class Login extends javax.swing.JFrame {

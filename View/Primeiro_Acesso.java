@@ -1,5 +1,5 @@
-package View;
-import Model.MainLogin;
+package view;
+import model.MainLogin;
 import java.awt.Color;
 
 public class Primeiro_Acesso extends javax.swing.JFrame {
@@ -228,7 +228,7 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(orangePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 590, Short.MAX_VALUE)
+            .addComponent(orangePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
