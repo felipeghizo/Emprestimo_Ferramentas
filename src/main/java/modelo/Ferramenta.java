@@ -1,4 +1,5 @@
-package model;
+
+package modelo;
 
 public class Ferramenta{
 

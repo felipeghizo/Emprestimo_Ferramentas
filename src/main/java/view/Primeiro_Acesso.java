@@ -1,5 +1,7 @@
+
 package view;
-import model.MainLogin;
+
+import modelo.LoginPrincipal;
 import java.awt.Color;
 import dao.SenhaDAO;
 
@@ -242,7 +244,7 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
         String senha = new String(senhaChar);
         String senhaConf = new String(senhaConfChar);
        
-        MainLogin login = new MainLogin();
+        LoginPrincipal login = new LoginPrincipal();
         if (login.Password(senha, senhaConf)){
            setsenha.configSenha(senha);
            OkMesage.setVisible(true);

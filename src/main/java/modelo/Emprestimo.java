@@ -1,5 +1,5 @@
 
-package model;
+package modelo;
 
 public class Emprestimo {
     private String DataDevolucao;

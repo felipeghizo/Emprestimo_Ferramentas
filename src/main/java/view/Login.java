@@ -1,5 +1,7 @@
+
 package view;
-import model.MainLogin;
+
+import modelo.LoginPrincipal;
 import java.awt.Color;
 
 public class Login extends javax.swing.JFrame {
@@ -337,7 +339,7 @@ public class Login extends javax.swing.JFrame {
         // Convertendo a matriz de caracteres em uma string
         String senha = new String(senhaChar);
         
-        MainLogin mainLogin = new MainLogin();
+        LoginPrincipal mainLogin = new LoginPrincipal();
         if (mainLogin.checkPassword(senha)){
             Menu menu = new Menu();
             this.setVisible(false);

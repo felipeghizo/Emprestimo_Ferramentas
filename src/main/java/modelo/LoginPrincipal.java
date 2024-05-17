@@ -1,18 +1,20 @@
-package model;
+
+package modelo;
+
 import view.Primeiro_Acesso; 
 import dao.SenhaDAO;
 
 
-public class MainLogin {
+public class LoginPrincipal {
     
     private String password;
     private Primeiro_Acesso acesso;
     
-    public MainLogin(){
+    public LoginPrincipal(){
         this("admin123");
     }
     
-    public MainLogin(String password){
+    public LoginPrincipal(String password){
     this.setPassword(password);
     }
     
