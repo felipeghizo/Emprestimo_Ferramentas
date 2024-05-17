@@ -1,6 +1,7 @@
 package view;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import dao.FerramentaDAO;
 
 
 public class Ferramenta extends javax.swing.JFrame {
@@ -9,6 +10,7 @@ public class Ferramenta extends javax.swing.JFrame {
     Color orangeColor = Color.decode("#FF9500");
     Color redColor = Color.decode("#FF2424");
     Color whiteColor = Color.decode("#6E6E6E");
+    FerramentaDAO ferramenta = new FerramentaDAO();
     
     public Ferramenta() {
         // Configurações do JFrame
@@ -182,7 +184,7 @@ public class Ferramenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
-        this.setVisible(false);
+        this.setEnabled(false);
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_VoltarActionPerformed
@@ -231,7 +233,10 @@ public class Ferramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_VoltarMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        String nome = JOptionPane.showInputDialog(null, "Nome:");
+        String marca = JOptionPane.showInputDialog(null, "Telefone:");
+        double custo = Double.parseDouble(JOptionPane.showInputDialog(null, "custo R$:"));
+        ferramenta.addFerramenta(nome, marca, custo);        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

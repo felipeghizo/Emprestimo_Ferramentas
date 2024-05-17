@@ -184,6 +184,7 @@ public class Login extends javax.swing.JFrame {
 
         Password.setBackground(new java.awt.Color(107, 122, 139));
 
+        ShowPassword.setBackground(new java.awt.Color(39, 56, 75));
         ShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         ShowPassword.setText("Mostrar senha");
         ShowPassword.addActionListener(new java.awt.event.ActionListener() {

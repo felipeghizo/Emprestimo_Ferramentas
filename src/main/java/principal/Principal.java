@@ -2,8 +2,8 @@ package principal;
 
 import view.Primeiro_Acesso;
 import view.Login;
-import javax.swing.JOptionPane;
-import DAO.Conexao;
+import dao.Conexao;
+import dao.SenhaDAO;
 
 
 public class Principal {
@@ -12,8 +12,10 @@ public class Principal {
 
         Conexao conexao = new Conexao();
         conexao.getConexao();
-        String loginCheck = "banco de dados";
-        if (loginCheck.compareTo("abc") != 0){
+        
+        SenhaDAO senha = new SenhaDAO();
+        System.out.println("----------------------"+senha.getSenha());
+        if (senha.getSenha() == null){
             Primeiro_Acesso primeiro_acesso = new Primeiro_Acesso();
             primeiro_acesso.setVisible(true);
         }

@@ -139,6 +139,11 @@ public class Emprestimo extends javax.swing.JFrame {
                 VoltarMouseExited(evt);
             }
         });
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarActionPerformed(evt);
+            }
+        });
 
         Fechar.setBackground(new java.awt.Color(255, 149, 0));
         Fechar.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -221,6 +226,12 @@ public class Emprestimo extends javax.swing.JFrame {
     private void VoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VoltarMouseExited
         Voltar.setBackground(orangeColor);
     }//GEN-LAST:event_VoltarMouseExited
+
+    private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.setEnabled(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_VoltarActionPerformed
 
     /**
      * @param args the command line arguments

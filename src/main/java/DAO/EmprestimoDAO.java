@@ -1,5 +1,5 @@
 
-package DAO;
+package dao;
 
 
 public class EmprestimoDAO {

@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import dao.AmigoDAO;
 
 
 public class Amigo extends javax.swing.JFrame {
@@ -9,6 +11,7 @@ public class Amigo extends javax.swing.JFrame {
     Color orangeColor = Color.decode("#FF9500");
     Color redColor = Color.decode("#FF2424");
     Color whiteColor = Color.decode("#6E6E6E");
+    AmigoDAO amigo = new AmigoDAO();
     
     public Amigo() {
         // Configurações do JFrame
@@ -34,8 +37,8 @@ public class Amigo extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
         Voltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -91,33 +94,45 @@ public class Amigo extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(39, 56, 75));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Adicionar amigo");
+        jButton1.setBackground(new java.awt.Color(107, 122, 139));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Adicionar amigo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Gerenciar amigos");
+        jButton2.setBackground(new java.awt.Color(107, 122, 139));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Gerenciar amigos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(53, 53, 53))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(jButton1)
+                .addGap(68, 68, 68)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(120, 120, 120)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(200, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         Fechar.setBackground(new java.awt.Color(255, 149, 0));
@@ -206,7 +221,7 @@ public class Amigo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
-        this.setVisible(false);
+        this.setEnabled(false);
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_VoltarActionPerformed
@@ -234,6 +249,16 @@ public class Amigo extends javax.swing.JFrame {
     private void VoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VoltarMouseExited
         Voltar.setBackground(orangeColor);
     }//GEN-LAST:event_VoltarMouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String addAmigo = JOptionPane.showInputDialog(null, "Nome:");
+        String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
+        amigo.addAmigo(addAmigo, foneAmigo);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,9 +297,9 @@ public class Amigo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Voltar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;

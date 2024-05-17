@@ -1,5 +1,5 @@
 
-package DAO;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,11 +14,11 @@ public class Conexao {
             Class.forName(driver);
             // Configurar a conexão
             String server = "localhost";
-            String database = "Emprestimos";
+            String database = "emprestimo";
             String url = "jdbc:mysql://" + server + ":3306/"
             +database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "Ismamuwa2901@";
+            String password = "admin123";
             // Conectando..
             connection = DriverManager.getConnection(url, user, password);
             // Testando..
