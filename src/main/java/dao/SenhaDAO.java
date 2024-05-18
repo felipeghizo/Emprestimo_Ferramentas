@@ -16,7 +16,7 @@ public final class SenhaDAO {
         try (Statement stmt = conexao.getConexao().createStatement()) {
             ResultSet res = stmt.executeQuery("""
                                               SELECT senha FROM db_senha
-                                              ORDER BY iddb_senha DESC
+                                              ORDER BY usuarioid DESC
                                               LIMIT 1;""");
             if (res.next()) {
                 senha = res.getString("senha"); 

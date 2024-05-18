@@ -4,6 +4,9 @@ package view;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import dao.AmigoDAO;
+import java.util.ArrayList;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 public class Amigo extends javax.swing.JFrame {
@@ -13,6 +16,7 @@ public class Amigo extends javax.swing.JFrame {
     Color redColor = Color.decode("#FF2424");
     Color whiteColor = Color.decode("#6E6E6E");
     AmigoDAO amigo = new AmigoDAO();
+    ArrayList minhaLista = new ArrayList();
     
     public Amigo() {
         // Configurações do JFrame
@@ -258,7 +262,57 @@ public class Amigo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String editAmigo = JOptionPane.showInputDialog("Nome ou telefone do amigo: ");
+        int amigoid = amigo.editarAmigo(editAmigo);
+        if(amigoid == 9999999){
+           JOptionPane.showMessageDialog(null, "Dados não encontrados!"); 
+        }else{
+            // Definindo o look and feel do sistema operacional
+           try {
+               UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+           } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+               e.printStackTrace();
+           }
+
+           // Opções de botões
+           String[] options = {"Nome", "Telefone", "Cancelar"};
+
+           // Mensagem da caixa de diálogo
+           String message = "Qual dado você gostaria de alterar?";
+
+           // Título da caixa de diálogo
+           String title = "Editando dados de amigo";
+
+           // Exibindo o JOptionPane com botões personalizados
+           int option = JOptionPane.showOptionDialog(
+                   null,                                 // Componente pai
+                   message,                              // Mensagem
+                   title,                                // Título
+                   JOptionPane.YES_NO_CANCEL_OPTION,     // Tipo de opção
+                   JOptionPane.QUESTION_MESSAGE,         // Tipo de mensagem
+                   null,                                 // Ícone
+                   options,                              // Botões personalizados
+                   options[0]                            // Botão padrão
+           );
+
+           // Tratamento da opção selecionada
+           switch (option) {
+               case 0: // Salvar
+                   String editNome = JOptionPane.showInputDialog("Novo nome: ");
+                   amigo.setNome(amigoid, editNome);
+                   break;
+               case 1: // Não Salvar
+                   String editTelefone = JOptionPane.showInputDialog("Novo telefone: ");
+                   amigo.setTelefone(amigoid, editTelefone);
+                   break;
+               case 2: // Cancelar
+                   JOptionPane.showMessageDialog(null, "Operação cancelada!");
+                   break;
+               default:
+                   System.out.println("Nenhuma opção selecionada");
+                   break;
+           }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
