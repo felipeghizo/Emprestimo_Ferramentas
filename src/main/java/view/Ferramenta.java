@@ -4,6 +4,8 @@ package view;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import dao.FerramentaDAO;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 public class Ferramenta extends javax.swing.JFrame {
@@ -82,14 +84,14 @@ public class Ferramenta extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(151, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(148, 148, 148))
         );
         jPanel1Layout.setVerticalGroup(
@@ -192,21 +194,6 @@ public class Ferramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void FecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseClicked
-        JOptionPane optionPane = new JOptionPane("Salvando alterações...", JOptionPane.INFORMATION_MESSAGE);
-        Thread thread = new Thread(() -> {
-            try {
-                Thread.sleep(3000); // Aguarda 3 segundos
-                optionPane.setVisible(false); // Fecha o JOptionPane após 3 segundos
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        thread.start();
-        
-        // Cria um JFrame temporário para exibir o JOptionPane
-        JOptionPane.showMessageDialog(null, optionPane);
-        
-
         System.exit(0);
     }//GEN-LAST:event_FecharMouseClicked
 
@@ -215,7 +202,62 @@ public class Ferramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_FecharActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String editNome = JOptionPane.showInputDialog("Nome da ferramenta: ");
+        String editMarca = JOptionPane.showInputDialog("Marca da ferramenta: ");
+        int ferramentaid = ferramenta.editarFerramenta(editNome, editMarca);
+        if(ferramentaid == -1){
+           JOptionPane.showMessageDialog(null, "Dados não encontrados!"); 
+        }else{
+            // Definindo o look and feel do sistema operacional
+           try {
+               UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+           } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+               e.printStackTrace();
+           }
+
+           // Opções de botões
+           String[] options = {"Nome", "Marca", "Custo", "Cancelar"};
+
+           // Mensagem da caixa de diálogo
+           String message = "Qual dado você gostaria de alterar?";
+
+           // Título da caixa de diálogo
+           String title = "Editando dados de ferramenta";
+
+           // Exibindo o JOptionPane com botões personalizados
+           int option = JOptionPane.showOptionDialog(
+                   null,                                 // Componente pai
+                   message,                              // Mensagem
+                   title,                                // Título
+                   JOptionPane.YES_NO_CANCEL_OPTION,     // Tipo de opção
+                   JOptionPane.QUESTION_MESSAGE,         // Tipo de mensagem
+                   null,                                 // Ícone
+                   options,                              // Botões personalizados
+                   options[0]                            // Botão padrão
+           );
+
+           // Tratamento da opção selecionada
+           switch (option) {
+               case 0: // Salvar
+                   editNome = JOptionPane.showInputDialog("Novo nome: ");
+                   ferramenta.setNome(ferramentaid, editNome);
+                   break;
+               case 1: // Não Salvar
+                   editMarca = JOptionPane.showInputDialog("Nova Marca: ");
+                   ferramenta.setMarca(ferramentaid, editMarca);
+                   break;
+               case 2: // Cancelar
+                   double editCusto = Double.parseDouble(JOptionPane.showInputDialog("Novo Custo: "));
+                   ferramenta.setCusto(ferramentaid, editCusto);
+                   break;
+               case 3: // Cancelar
+                   JOptionPane.showMessageDialog(null, "Operação cancelada!");
+                   break;
+               default:
+                   System.out.println("Nenhuma opção selecionada");
+                   break;
+           }
+        }        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void FecharMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FecharMouseEntered
@@ -236,7 +278,7 @@ public class Ferramenta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome = JOptionPane.showInputDialog(null, "Nome:");
-        String marca = JOptionPane.showInputDialog(null, "Telefone:");
+        String marca = JOptionPane.showInputDialog(null, "Marca:");
         double custo = Double.parseDouble(JOptionPane.showInputDialog(null, "custo R$:"));
         ferramenta.addFerramenta(nome, marca, custo);        
     }//GEN-LAST:event_jButton1ActionPerformed

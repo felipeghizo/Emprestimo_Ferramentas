@@ -246,6 +246,7 @@ public class Primeiro_Acesso extends javax.swing.JFrame {
        
         LoginPrincipal login = new LoginPrincipal();
         if (login.Password(senha, senhaConf)){
+            ErrorMesage.setVisible(false); 
            setsenha.configSenha(senha);
            OkMesage.setVisible(true);
            Seguir.setVisible(true);
