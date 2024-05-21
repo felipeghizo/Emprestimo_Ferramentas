@@ -4,7 +4,6 @@ package view;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import dao.FerramentaDAO;
-import java.util.ArrayList;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -75,20 +74,10 @@ public class Ferramenta extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(107, 122, 139));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Relatorio de ferramentas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton4.setBackground(new java.awt.Color(107, 122, 139));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Custo total");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -293,31 +282,6 @@ public class Ferramenta extends javax.swing.JFrame {
         double custo = Double.parseDouble(JOptionPane.showInputDialog(null, "custo R$:"));
         ferramenta.addFerramenta(nome, marca, custo);        
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            Statement stmt = conexao.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_ferramentas");
-            while (res.next()) {
-                String nome = res.getString("nome");
-                String marca = res.getString("marca");
-                double custo = res.getDouble("custo");
-                Ferramenta objeto = new Ferramenta(nome, marca, custo);
-                minhaLista.add(objeto);
-            }
-            stmt.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Deu ruim paizao!");
-        }
-        return minhaLista;
-    
-        
-           
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
