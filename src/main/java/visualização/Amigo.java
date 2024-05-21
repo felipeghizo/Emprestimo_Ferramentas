@@ -1,5 +1,5 @@
 
-package view;
+package visualização;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -44,6 +44,7 @@ public class Amigo extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        ExcluirAmigo = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
         Voltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -119,16 +120,28 @@ public class Amigo extends javax.swing.JFrame {
             }
         });
 
+        ExcluirAmigo.setBackground(new java.awt.Color(107, 122, 139));
+        ExcluirAmigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ExcluirAmigo.setForeground(new java.awt.Color(255, 255, 255));
+        ExcluirAmigo.setText("Excluir amigo");
+        ExcluirAmigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirAmigoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(68, 68, 68)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ExcluirAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +149,8 @@ public class Amigo extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExcluirAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
@@ -193,7 +207,7 @@ public class Amigo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,6 +329,12 @@ public class Amigo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void ExcluirAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirAmigoActionPerformed
+        String nomeAmigo = JOptionPane.showInputDialog(null, "Nome:");
+        String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
+        amigo.delAmigo(nomeAmigo, foneAmigo);
+    }//GEN-LAST:event_ExcluirAmigoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,6 +370,7 @@ public class Amigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExcluirAmigo;
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Voltar;
     private javax.swing.JButton jButton1;

@@ -1,5 +1,5 @@
 
-package view;
+package visualização;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

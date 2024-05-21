@@ -1,7 +1,7 @@
 
 package modelo;
 
-import view.Primeiro_Acesso; 
+import visualização.Primeiro_Acesso; 
 import dao.SenhaDAO;
 
 

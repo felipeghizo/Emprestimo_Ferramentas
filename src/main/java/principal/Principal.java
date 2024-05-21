@@ -2,8 +2,8 @@
 package principal;
 
 
-import view.Primeiro_Acesso;
-import view.Login;
+import visualização.Primeiro_Acesso;
+import visualização.Login;
 import dao.Conexao;
 import dao.SenhaDAO;
 

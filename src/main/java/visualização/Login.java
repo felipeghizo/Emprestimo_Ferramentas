@@ -1,5 +1,5 @@
 
-package view;
+package visualização;
 
 import modelo.LoginPrincipal;
 import java.awt.Color;

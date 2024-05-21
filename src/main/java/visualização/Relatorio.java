@@ -1,4 +1,4 @@
-package view;
+package visualização;
 
 
 public class Relatorio extends javax.swing.JFrame {

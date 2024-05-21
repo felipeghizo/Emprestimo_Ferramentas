@@ -84,6 +84,21 @@ public class AmigoDAO {
         }
     }
     
+    // Deleta Amigos(objetos)
+    public void delAmigo(String nome, String telefone) {
+        String sql = "DELETE FROM db_amigos WHERE nome = (?) AND telefone = (?);";
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, telefone);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    
     public int editarAmigo(String editar) {
         String sql = "SELECT COUNT(*) AS total FROM db_amigos WHERE nome = ? OR telefone = ?";
         int amigoid = 0;

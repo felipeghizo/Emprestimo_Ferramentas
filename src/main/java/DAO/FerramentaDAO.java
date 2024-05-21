@@ -88,7 +88,7 @@ public class FerramentaDAO {
         return minhaLista;
     }
     
-    // Adiciona Amigos(objetos)
+    // Adiciona Ferramentas(objetos)
     public void addFerramenta(String nome, String marca, double custo) {
         String sql = "INSERT INTO db_ferramentas(nome,marca,custo) VALUES(?,?,?)";
         try {
@@ -96,6 +96,21 @@ public class FerramentaDAO {
             stmt.setString(1, nome);
             stmt.setString(2, marca);
             stmt.setDouble(3, custo);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    
+    // Deleta Ferramentas(objetos)
+    public void delFerramenta(String nome, String marca) {
+        String sql = "DELETE FROM db_ferramentas WHERE nome = (?) AND marca = (?);";
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, marca);
             stmt.execute();
             stmt.close();
         } catch (SQLException erro) {
