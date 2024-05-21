@@ -13,6 +13,13 @@ Unidade Curricular: Programação de Soluções Computacionais<br /><br />
   Gustavo Cesar Tambosi<br />
   Munich Effting<br /> 
 </p>
+<p>Acesso ao Banco de Dados:<br />
+  Nome: emprestimos<br />
+  Usuário: root<br />
+  Senha: admin123<br />
+
+  O codigo pra criar o banco de dados esta no arquivo bd.txt
+
   
    <h2>A3 – Desempenho de compreensão</h2>
 
