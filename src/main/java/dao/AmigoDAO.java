@@ -55,7 +55,7 @@ public class AmigoDAO {
         minhaLista.clear(); // Limpa nosso ArrayList
         try {
             Statement stmt = conexao.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_amigos");
+            ResultSet res = stmt.executeQuery("SELECT * FROM db_amigos");
             while (res.next()) {
                 String nome = res.getString("nome");
                 String telefone = res.getString("telefone");

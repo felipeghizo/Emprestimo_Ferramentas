@@ -2,9 +2,12 @@
 package visualização;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.Amigo;
 import modelo.Ferramenta;
 
 
@@ -15,7 +18,8 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
     Color redColor = Color.decode("#FF2424");
     Color whiteColor = Color.decode("#6E6E6E");
     Ferramenta ferramenta = new Ferramenta();
-    
+    ArrayList minhaLista = new ArrayList();
+   
     public visualizacaoFerramenta() {
         // Configurações do JFrame
         this.setTitle("Ferramenta");
@@ -39,8 +43,8 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        relatorio = new javax.swing.JButton();
+        custoTotal = new javax.swing.JButton();
         excluirFerramenta = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
         Voltar = new javax.swing.JButton();
@@ -82,13 +86,23 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(107, 122, 139));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Relatorio de ferramentas");
+        relatorio.setBackground(new java.awt.Color(107, 122, 139));
+        relatorio.setForeground(new java.awt.Color(255, 255, 255));
+        relatorio.setText("Relatorio de ferramentas");
+        relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relatorioActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(107, 122, 139));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Custo total");
+        custoTotal.setBackground(new java.awt.Color(107, 122, 139));
+        custoTotal.setForeground(new java.awt.Color(255, 255, 255));
+        custoTotal.setText("Custo total");
+        custoTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custoTotalActionPerformed(evt);
+            }
+        });
 
         excluirFerramenta.setBackground(new java.awt.Color(107, 122, 139));
         excluirFerramenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,9 +128,9 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
                         .addComponent(excluirFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(relatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(custoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,8 +143,8 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
                     .addComponent(excluirFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(custoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(relatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(77, 77, 77))
         );
 
@@ -319,6 +333,64 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
         ferramenta.delFerramenta(nomeAmigo, foneAmigo);
     }//GEN-LAST:event_excluirFerramentaActionPerformed
 
+    private void relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioActionPerformed
+        minhaLista.clear();
+        minhaLista = ferramenta.getMinhaListaFerramenta();
+         // Verificar se a lista não está vazia
+        String tupla = "";
+        int cont = 0;
+        while(cont < minhaLista.size()){
+            // Verificar o tipo do primeiro objeto na lista
+            Object atualFerramenta = minhaLista.get(cont);
+            if (atualFerramenta instanceof Ferramenta) {
+                // Exibir os dados da primeira ferramenta na lista
+                String nome = ((Ferramenta) atualFerramenta).getNome();
+                String marca = ((Ferramenta) atualFerramenta).getMarca();
+                double custo = ((Ferramenta) atualFerramenta).getCusto();
+                tupla += nome+"    ->     "+marca+" R$: "+custo+"\n";
+                cont++;
+            } else {
+                // Tipo de objeto inesperado
+                System.out.println("O objeto na lista não é do tipo Ferramenta.");
+            }
+        } 
+        JOptionPane.showMessageDialog(null, tupla);
+        if (minhaLista.isEmpty()){
+            // Exibir mensagem informando que a lista está vazia
+            JOptionPane.showMessageDialog(null, "A lista de ferramentas está vazia.");
+        }
+    }//GEN-LAST:event_relatorioActionPerformed
+
+    private void custoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custoTotalActionPerformed
+        minhaLista.clear();
+        minhaLista = ferramenta.getMinhaListaFerramenta();
+         // Verificar se a lista não está vazia
+        String tupla = "";
+        double soma = 0;
+        int cont = 0;
+        while(cont < minhaLista.size()){
+            // Verificar o tipo do primeiro objeto na lista
+            Object atualFerramenta = minhaLista.get(cont);
+            if (atualFerramenta instanceof Ferramenta) {
+                // Exibir o custo da ferramenta atual
+                soma +=((Ferramenta) atualFerramenta).getCusto();
+                cont++;
+            } else {
+                // Tipo de objeto inesperado
+                System.out.println("O objeto na lista não é do tipo Ferramenta.");
+            }
+        } 
+        if (minhaLista.isEmpty()){
+            // Exibir mensagem informando que a lista está vazia
+            JOptionPane.showMessageDialog(null, "A lista de ferramentas está vazia.");
+        } else{
+            // Formatar e imprimir a soma dos custos de cada ferramenta
+            DecimalFormat df = new DecimalFormat("0.##");
+            String somaFormatado = df.format(soma);
+            JOptionPane.showMessageDialog(null, "O Custo de todas as ferramentas da lista é R$ "+somaFormatado);
+        }
+    }//GEN-LAST:event_custoTotalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,14 +430,14 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Voltar;
+    private javax.swing.JButton custoTotal;
     private javax.swing.JButton excluirFerramenta;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton relatorio;
     // End of variables declaration//GEN-END:variables
 }

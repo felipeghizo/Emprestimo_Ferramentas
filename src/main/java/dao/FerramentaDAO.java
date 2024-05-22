@@ -73,7 +73,7 @@ public class FerramentaDAO {
         minhaLista.clear(); // Limpa nosso ArrayList
         try {
             Statement stmt = conexao.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_ferramentas");
+            ResultSet res = stmt.executeQuery("SELECT * FROM db_ferramentas");
             while (res.next()) {
                 String nome = res.getString("nome");
                 String marca = res.getString("marca");

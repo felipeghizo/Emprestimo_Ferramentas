@@ -42,9 +42,10 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        listaAmigos = new javax.swing.JButton();
+        editAmigo = new javax.swing.JButton();
         ExcluirAmigo = new javax.swing.JButton();
+        addAmigo = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
         Voltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -100,23 +101,23 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(39, 56, 75));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(107, 122, 139));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Adicionar amigo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        listaAmigos.setBackground(new java.awt.Color(107, 122, 139));
+        listaAmigos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        listaAmigos.setForeground(new java.awt.Color(255, 255, 255));
+        listaAmigos.setText("Lista de amigos");
+        listaAmigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                listaAmigosActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(107, 122, 139));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Gerenciar amigos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editAmigo.setBackground(new java.awt.Color(107, 122, 139));
+        editAmigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        editAmigo.setForeground(new java.awt.Color(255, 255, 255));
+        editAmigo.setText("Gerenciar amigos");
+        editAmigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editAmigoActionPerformed(evt);
             }
         });
 
@@ -130,28 +131,43 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
             }
         });
 
+        addAmigo.setBackground(new java.awt.Color(107, 122, 139));
+        addAmigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addAmigo.setForeground(new java.awt.Color(255, 255, 255));
+        addAmigo.setText("Adicionar amigo");
+        addAmigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAmigoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(ExcluirAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(editAmigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addAmigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(listaAmigos, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(ExcluirAmigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(67, 67, 67)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ExcluirAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                    .addComponent(ExcluirAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listaAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         Fechar.setBackground(new java.awt.Color(255, 149, 0));
@@ -269,13 +285,34 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
         Voltar.setBackground(orangeColor);
     }//GEN-LAST:event_VoltarMouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String addAmigo = JOptionPane.showInputDialog(null, "Nome:");
-        String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
-        amigo.addAmigo(addAmigo, foneAmigo);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void listaAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAmigosActionPerformed
+        minhaLista.clear();
+        minhaLista = amigo.getMinhaListaAmigo();
+         // Verificar se a lista não está vazia
+        String tupla = "NOME | TELEFONE\n";
+        int cont = 0;
+        while(cont < minhaLista.size()){
+            // Verificar o tipo do primeiro objeto na lista
+            Object primeiroAmigo = minhaLista.get(cont);
+            if (primeiroAmigo instanceof Amigo) {
+                // Exibir os dados do amigo atual na lista
+                String nome = ((Amigo) primeiroAmigo).getNome();
+                String telefone = ((Amigo) primeiroAmigo).getTelefone();
+                tupla += nome+"    ->     "+telefone+"\n";
+                cont++;
+            } else {
+                // Tipo de objeto inesperado
+                System.out.println("O objeto na lista não é do tipo Amigo.");
+            }
+        } 
+        JOptionPane.showMessageDialog(null, tupla);
+        if (minhaLista.isEmpty()){
+            // Exibir mensagem informando que a lista está vazia
+            JOptionPane.showMessageDialog(null, "A lista de amigos está vazia.");
+        }
+    }//GEN-LAST:event_listaAmigosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void editAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAmigoActionPerformed
         String editAmigo = JOptionPane.showInputDialog("Nome ou telefone do amigo: ");
         int amigoid = amigo.editarAmigo(editAmigo);
         if(amigoid == 9999999){
@@ -327,13 +364,19 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
                    break;
            }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_editAmigoActionPerformed
 
     private void ExcluirAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirAmigoActionPerformed
         String nomeAmigo = JOptionPane.showInputDialog(null, "Nome:");
         String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
         amigo.delAmigo(nomeAmigo, foneAmigo);
     }//GEN-LAST:event_ExcluirAmigoActionPerformed
+
+    private void addAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAmigoActionPerformed
+        String addAmigo = JOptionPane.showInputDialog(null, "Nome:");
+        String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
+        amigo.addAmigo(addAmigo, foneAmigo);
+    }//GEN-LAST:event_addAmigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,8 +416,8 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
     private javax.swing.JButton ExcluirAmigo;
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Voltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addAmigo;
+    private javax.swing.JButton editAmigo;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
@@ -383,5 +426,6 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel l_numerosorteado2;
+    private javax.swing.JButton listaAmigos;
     // End of variables declaration//GEN-END:variables
 }
