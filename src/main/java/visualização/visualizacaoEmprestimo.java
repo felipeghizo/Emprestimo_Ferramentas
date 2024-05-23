@@ -4,6 +4,12 @@ package visualização;
 import dao.AmigoDAO;
 import dao.FerramentaDAO;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import modelo.Amigo;
+import modelo.Emprestimo;
+import modelo.Ferramenta;
 
 
 public class visualizacaoEmprestimo extends javax.swing.JFrame {
@@ -14,7 +20,10 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     Color whiteColor = Color.decode("#6E6E6E");
     
     AmigoDAO amigo = new AmigoDAO();
+    Amigo amigo1 = new Amigo();
     FerramentaDAO ferramenta = new FerramentaDAO();
+    Ferramenta ferramenta1 = new Ferramenta();
+    Emprestimo emprestimo = new Emprestimo();
     
     public visualizacaoEmprestimo() {
         // Configurações do JFrame
@@ -28,21 +37,30 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        boxFerramenta = new javax.swing.JComboBox<>();
-        jPanel4 = new javax.swing.JPanel();
-        boxAmigo = new javax.swing.JComboBox<>();
+        emprestar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        selecionarAmigo = new javax.swing.JButton();
+        selecionarFerramenta = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Voltar = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
+
+        jButton3.setBackground(new java.awt.Color(107, 122, 139));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Emprestar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,62 +80,14 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("<-------");
 
-        jButton1.setBackground(new java.awt.Color(107, 122, 139));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Emprestar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        emprestar.setBackground(new java.awt.Color(107, 122, 139));
+        emprestar.setForeground(new java.awt.Color(255, 255, 255));
+        emprestar.setText("Emprestar");
+        emprestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                emprestarActionPerformed(evt);
             }
         });
-
-        boxFerramenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        boxFerramenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxFerramentaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boxFerramenta, 0, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boxFerramenta, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        boxAmigo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        boxAmigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxAmigoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boxAmigo, 0, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(boxAmigo, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         jButton2.setBackground(new java.awt.Color(107, 122, 139));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,61 +102,88 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("------->");
 
+        selecionarAmigo.setBackground(new java.awt.Color(107, 122, 139));
+        selecionarAmigo.setForeground(new java.awt.Color(255, 255, 255));
+        selecionarAmigo.setText("Selecionar");
+        selecionarAmigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarAmigoActionPerformed(evt);
+            }
+        });
+
+        selecionarFerramenta.setBackground(new java.awt.Color(107, 122, 139));
+        selecionarFerramenta.setForeground(new java.awt.Color(255, 255, 255));
+        selecionarFerramenta.setText("Selecionar");
+        selecionarFerramenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarFerramentaActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(107, 122, 139));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Relatótio empréstimos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(107, 107, 107)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(selecionarFerramenta))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(50, 50, 50))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addGap(62, 62, 62)))
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(emprestar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(49, 49, 49)
+                        .addComponent(selecionarAmigo))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(146, 146, 146))))
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(217, 217, 217))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButton4)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton1)
+                        .addGap(30, 30, 30)
+                        .addComponent(emprestar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 76, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selecionarFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selecionarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -270,9 +267,12 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void emprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarActionPerformed
+        int amigoid = amigo1.editarAmigo(selecionarAmigo.getText());
+        String[] ferra = selecionarFerramenta.getText().split(" ");
+        int ferramentaid = ferramenta1.editarFerramenta(ferra[0], ferra[1]);
+        emprestimo.addEmprestimo(amigoid, ferramentaid, atualizarData());
+    }//GEN-LAST:event_emprestarActionPerformed
 
     private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
         this.setVisible(false);
@@ -300,18 +300,39 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_VoltarActionPerformed
 
-    private void boxFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxFerramentaActionPerformed
-        
-    }//GEN-LAST:event_boxFerramentaActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void boxAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxAmigoActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_boxAmigoActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void selecionarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarAmigoActionPerformed
+        String nomeAmigo = JOptionPane.showInputDialog(null, "Nome do amigo: ");
+        selecionarAmigo.setText(nomeAmigo);
+    }//GEN-LAST:event_selecionarAmigoActionPerformed
+
+    private void selecionarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarFerramentaActionPerformed
+        String nomeFerramenta = JOptionPane.showInputDialog(null, "Nome da ferramenta: ");
+        String marcaFerramenta = JOptionPane.showInputDialog(null, "Marca da ferramenta: ");
+        selecionarFerramenta.setText(nomeFerramenta+" "+marcaFerramenta);
+    }//GEN-LAST:event_selecionarFerramentaActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+    // Método para atualizar a data
+    private String atualizarData() {
+        // Obtendo a data atual do dispositivo local
+        Date dataAtual = new Date();
+
+        // Formatando a data para exibição
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = formatoData.format(dataAtual);
+
+        return dataFormatada;
+    }
     /**
      * @param args the command line arguments
      */
@@ -351,10 +372,10 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Voltar;
-    private javax.swing.JComboBox<String> boxAmigo;
-    private javax.swing.JComboBox<String> boxFerramenta;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton emprestar;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -362,7 +383,7 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton selecionarAmigo;
+    private javax.swing.JButton selecionarFerramenta;
     // End of variables declaration//GEN-END:variables
 }

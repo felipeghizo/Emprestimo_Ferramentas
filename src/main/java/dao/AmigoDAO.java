@@ -130,7 +130,7 @@ public class AmigoDAO {
                         }
                     } else {
                         // Nenhum amigo foi encontrado, você pode lidar com isso aqui
-                        return 9999999;
+                        return -1;
                     }
                 }
             }
