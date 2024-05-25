@@ -1,4 +1,3 @@
-
 package modelo;
 
 import dao.AmigoDAO;
@@ -23,34 +22,42 @@ public class Amigo{
 
     // Getters 
     public String getNome(){
-        return this.Nome;
+        return amigo.getNomeDAO(this.getAmigoid(this.Nome, this.Telefone));
     }
     public String getTelefone(){
         return this.Telefone;
     }
+    
+    public int getAmigoid(String nome, String telefone){
+        return amigo.getAmigoidDAO(nome, telefone);
+    }
+    // ----------
 
     // Setters
-    public void setNome(int amigoid, String nome){
+    public void setNome(String nome) {
+        String auxNome = this.Nome;
         this.Nome = nome;
-        amigo.setNomeDAO(amigoid, nome);
+        amigo.setNomeDAO(this.getAmigoid(auxNome, this.Telefone), nome);
     }
-    public void setTelefone(int amigoid, String telefone){
+    
+    public void setTelefone(String telefone){
+        String auxTelefone = this.Telefone;
         this.Telefone = telefone;
-        amigo.setTelefoneDAO(amigoid, telefone);
+        amigo.setTelefoneDAO(this.getAmigoid(this.Nome, auxTelefone), telefone);
     }
-
-    public void addAmigo(String addAmigo, String foneAmigo){
-        amigo.addAmigoDAO(addAmigo, foneAmigo);
+    // ----------
+    
+    // Adiciona o amigo ao banco de dados
+    public void addAmigo(){
+        amigo.addAmigoDAO(this.Nome, this.Telefone);
     }
     
-    public void delAmigo(String addAmigo, String foneAmigo){
-        amigo.delAmigoDAO(addAmigo, foneAmigo);
-    }
-        
-    public int editarAmigo(String editar){
-        return amigo.editarAmigoDAO(editar);
+    // Deleta o amigo do banco de dados
+    public void delAmigo(){
+        amigo.delAmigoDAO(this.Nome, this.Telefone);
     }
     
+    // Retorna todos os amigos cadastrados
     public ArrayList getMinhaListaAmigo(){
         return amigo.getMinhaListaAmigoDAO();
     }

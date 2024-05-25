@@ -1,10 +1,9 @@
 
 package visualização;
 
-import dao.AmigoDAO;
-import dao.FerramentaDAO;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Amigo;
@@ -19,11 +18,10 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     Color redColor = Color.decode("#FF2424");
     Color whiteColor = Color.decode("#6E6E6E");
     
-    AmigoDAO amigo = new AmigoDAO();
     Amigo amigo1 = new Amigo();
-    FerramentaDAO ferramenta = new FerramentaDAO();
     Ferramenta ferramenta1 = new Ferramenta();
     Emprestimo emprestimo = new Emprestimo();
+    ArrayList minhaLista = new ArrayList();
     
     public visualizacaoEmprestimo() {
         // Configurações do JFrame
@@ -38,17 +36,20 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton3 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         emprestar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Devolver = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         selecionarAmigo = new javax.swing.JButton();
         selecionarFerramenta = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        emprestimosAtivos = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        amigoMaisEmprestimos = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Voltar = new javax.swing.JButton();
         Fechar = new javax.swing.JButton();
@@ -59,6 +60,15 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setBackground(new java.awt.Color(107, 122, 139));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Relatório histórico de empréstimos");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -89,12 +99,12 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(107, 122, 139));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Devolver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Devolver.setBackground(new java.awt.Color(107, 122, 139));
+        Devolver.setForeground(new java.awt.Color(255, 255, 255));
+        Devolver.setText("Devolver");
+        Devolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                DevolverActionPerformed(evt);
             }
         });
 
@@ -120,12 +130,30 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(107, 122, 139));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Relatótio empréstimos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        emprestimosAtivos.setBackground(new java.awt.Color(107, 122, 139));
+        emprestimosAtivos.setForeground(new java.awt.Color(255, 255, 255));
+        emprestimosAtivos.setText("Relatótio empréstimos ativos");
+        emprestimosAtivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                emprestimosAtivosActionPerformed(evt);
+            }
+        });
+
+        jButton5.setBackground(new java.awt.Color(107, 122, 139));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Relatório histórico de empréstimos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        amigoMaisEmprestimos.setBackground(new java.awt.Color(107, 122, 139));
+        amigoMaisEmprestimos.setForeground(new java.awt.Color(255, 255, 255));
+        amigoMaisEmprestimos.setText("Amigo com mais empréstimos");
+        amigoMaisEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amigoMaisEmprestimosActionPerformed(evt);
             }
         });
 
@@ -134,38 +162,42 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(selecionarFerramenta))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                        .addGap(107, 107, 107)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(selecionarFerramenta))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Devolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(emprestar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(49, 49, 49)
+                                .addComponent(selecionarAmigo))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel5)
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabel2))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emprestar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(49, 49, 49)
-                        .addComponent(selecionarAmigo))
+                        .addGap(102, 102, 102)
+                        .addComponent(emprestimosAtivos)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel5)
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel2)))
+                        .addGap(201, 201, 201)
+                        .addComponent(amigoMaisEmprestimos)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(217, 217, 217))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -175,15 +207,23 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(emprestar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
+                        .addComponent(Devolver))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selecionarFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selecionarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 28, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emprestimosAtivos)
+                            .addComponent(jButton5))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(amigoMaisEmprestimos)
+                .addGap(15, 15, 15))
         );
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -235,7 +275,7 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 378, Short.MAX_VALUE)
                 .addComponent(Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,10 +308,20 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void emprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarActionPerformed
-        int amigoid = amigo1.editarAmigo(selecionarAmigo.getText());
-        String[] ferra = selecionarFerramenta.getText().split(" ");
-        int ferramentaid = ferramenta1.editarFerramenta(ferra[0], ferra[1]);
-        emprestimo.addEmprestimo(amigoid, ferramentaid, atualizarData());
+        String[] aux = selecionarAmigo.getText().split(" ");
+        int amigoid = amigo1.getAmigoid(aux[0], aux[1]);
+        String[] ferra = selecionarFerramenta.getText().split(" "); 
+        int ferramentaid = ferramenta1.getFerramentaid(ferra[0], ferra[1]);
+        if (emprestimo.verificarAmigo(amigoid) != -1){
+            emprestimo.addEmprestimo(amigoid, ferramentaid, atualizarData());
+        }else{
+            String resposta = JOptionPane.showInputDialog(null, "Amigo possui emprestimos ativos, deseja emprestar mesmo assim?\n S/N");
+            if ((resposta.compareTo("S") == 0) || (resposta.compareTo("s") == 0)){
+                emprestimo.addEmprestimo(amigoid, ferramentaid, atualizarData());
+            } else {
+                JOptionPane.showMessageDialog(null, "Empréstimo cancelado!");
+            }
+        }
     }//GEN-LAST:event_emprestarActionPerformed
 
     private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
@@ -300,9 +350,14 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_VoltarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void DevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DevolverActionPerformed
+        String[] aux = selecionarAmigo.getText().split(" ");
+        int amigoid = amigo1.getAmigoid(aux[0], aux[1]);
+        String[] ferra = selecionarFerramenta.getText().split(" ");
+        int ferramentaid = ferramenta1.getFerramentaid(ferra[0], ferra[1]);
+        int emprestimoid = emprestimo.getEmprestimoid(amigoid, ferramentaid);
+        emprestimo.addDevolucao(emprestimoid, atualizarData());
+    }//GEN-LAST:event_DevolverActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -310,7 +365,8 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
 
     private void selecionarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarAmigoActionPerformed
         String nomeAmigo = JOptionPane.showInputDialog(null, "Nome do amigo: ");
-        selecionarAmigo.setText(nomeAmigo);
+        String telefoneAmigo = JOptionPane.showInputDialog(null, "Telefone do amigo: ");
+        selecionarAmigo.setText(nomeAmigo+" "+telefoneAmigo);
     }//GEN-LAST:event_selecionarAmigoActionPerformed
 
     private void selecionarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarFerramentaActionPerformed
@@ -319,9 +375,71 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         selecionarFerramenta.setText(nomeFerramenta+" "+marcaFerramenta);
     }//GEN-LAST:event_selecionarFerramentaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void emprestimosAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimosAtivosActionPerformed
+        minhaLista.clear();
+        minhaLista = emprestimo.getrelatorioAtivos();
+         // Verificar se a lista não está vazia
+        String tupla = "AMIGO | FERRAMENTA | DATA DO EMPRESTIMO\n";
+        int cont = 0;
+        while(cont < minhaLista.size()){
+            // Verificar o tipo do primeiro objeto na lista
+            Object primeiroEmprestimo = minhaLista.get(cont);
+            if (primeiroEmprestimo instanceof Emprestimo) {
+                // Exibir os dados do amigo atual na lista
+                String amigo = ((Emprestimo) primeiroEmprestimo).getAmigo();
+                String ferramenta = ((Emprestimo) primeiroEmprestimo).getFerramenta();
+                String dataEmprestimo = ((Emprestimo) primeiroEmprestimo).getDataEmprestimo();
+                tupla += amigo+"  "+ferramenta+"  "+dataEmprestimo+"\n";
+                cont++;
+            } else {
+                // Tipo de objeto inesperado
+                System.out.println("O objeto na lista não é do tipo Emprestimo.");
+            }
+        } 
+        
+        if (minhaLista.isEmpty()){
+            // Exibir mensagem informando que a lista está vazia
+            JOptionPane.showMessageDialog(null, "A lista de empréstimos está vazia.");
+        }else{JOptionPane.showMessageDialog(null, tupla);}
+    }//GEN-LAST:event_emprestimosAtivosActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Emprestimo emprestimosHist = new Emprestimo();
+        minhaLista.clear();
+        minhaLista = emprestimosHist.getrelatorioHistorico();
+         // Verificar se a lista não está vazia
+        String tupla = "AMIGO | FERRAMENTA | DATA EMPRESTIMO | DATA DEVOLUÇÃO\n";
+        int cont = 0;
+         while(cont < minhaLista.size()){
+            // Verificar o tipo do primeiro objeto na lista
+            Object atualEmprestimo = minhaLista.get(cont);
+            if (atualEmprestimo instanceof Emprestimo) {
+                // Exibir os dados da primeira ferramenta na lista
+                String amigo = ((Emprestimo) atualEmprestimo).getAmigo();
+                String ferramenta = ((Emprestimo) atualEmprestimo).getFerramenta();
+                String dataEmprestimo = ((Emprestimo) atualEmprestimo).getDataEmprestimo();
+                String dataDevolucao = ((Emprestimo) atualEmprestimo).getDataDevolucao();
+                tupla += amigo+"           "+ferramenta+"                 "+dataEmprestimo+"                 "+dataDevolucao+"\n";
+                cont++;
+            } else {
+                // Tipo de objeto inesperado
+                System.out.println("O objeto na lista não é do tipo Ferramenta.");
+            }
+        }
+        
+        if (minhaLista.isEmpty()){
+            // Exibir mensagem informando que a lista está vazia
+            JOptionPane.showMessageDialog(null, "A lista de ferramentas está vazia.");
+        }else{JOptionPane.showMessageDialog(null, tupla);}
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void amigoMaisEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amigoMaisEmprestimosActionPerformed
+        JOptionPane.showMessageDialog(null, emprestimo.maisEmprestimos());
+    }//GEN-LAST:event_amigoMaisEmprestimosActionPerformed
     // Método para atualizar a data
     private String atualizarData() {
         // Obtendo a data atual do dispositivo local
@@ -370,12 +488,15 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Devolver;
     private javax.swing.JButton Fechar;
     private javax.swing.JButton Voltar;
+    private javax.swing.JButton amigoMaisEmprestimos;
     private javax.swing.JButton emprestar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton emprestimosAtivos;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

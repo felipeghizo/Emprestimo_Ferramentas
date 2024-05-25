@@ -10,9 +10,9 @@ public final class SenhaDAO {
 
     Conexao conexao = new Conexao();
     
-    // Retorna a Lista de Amigos(objetos)
-    public String getSenha() {
-        String senha;
+    // getters
+    public String getSenhaDAO() {
+        String senha = "";
         try (Statement stmt = conexao.getConexao().createStatement()) {
             ResultSet res = stmt.executeQuery("""
                                               SELECT senha FROM db_senha
@@ -25,12 +25,10 @@ public final class SenhaDAO {
                 System.out.println("No data found");
             }
         } catch (SQLException ex) {
-            return null;
+            return senha;
         }
-        return null;
+        return senha;
     }
-    
-        // Retorna a Lista de Amigos(objetos)
     public int getUarioidDAO() {
         int usuarioid;
         try (Statement stmt = conexao.getConexao().createStatement()) {
@@ -49,9 +47,10 @@ public final class SenhaDAO {
         }
         return -1;
     }
+    // ----------
     
-    // Adiciona Amigos(objetos)
-    public void configSenha(String senha) {
+    // sett
+    public void setSenhaDAO(String senha) {
         String sql = "INSERT INTO db_senha(senha) VALUES(?)";
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
             stmt.setString(1, senha);

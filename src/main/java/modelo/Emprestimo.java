@@ -1,10 +1,8 @@
-
 package modelo;
 
-import dao.AmigoDAO;
 import dao.EmprestimoDAO;
-import dao.FerramentaDAO;
 import dao.SenhaDAO;
+import java.util.ArrayList;
 
 public class Emprestimo {
     private String DataDevolucao;
@@ -12,8 +10,6 @@ public class Emprestimo {
     private int Amigoid;
     private int Ferramentaid;
     
-    AmigoDAO amigo = new AmigoDAO();
-    FerramentaDAO ferramenta = new FerramentaDAO();
     EmprestimoDAO emprestimo = new EmprestimoDAO();
     SenhaDAO senha = new SenhaDAO();
 
@@ -28,30 +24,61 @@ public class Emprestimo {
         this.Ferramentaid = Ferramentaid;
     }
 
-    public String getDataDevolucao(int amigoid, int ferramentaid) {
-        int emprestimoid = emprestimo.editarEmprestimoDAO(amigoid, ferramentaid);
-        this.DataDevolucao = emprestimo.getDataDevolucaoDAO(emprestimoid);
-        return this.DataDevolucao;
+    // getters 
+    public String getAmigo(){
+        return emprestimo.getAmigoDAO(this.Amigoid);
     }
-
+    public String getFerramenta(){
+        return emprestimo.getFerramentaDAO(this.Ferramentaid);
+    }
     public String getDataEmprestimo() {
-        return DataEmprestimo;
+        return emprestimo.getDataEmprestimoDAO(this.getEmprestimoid(this.Amigoid, this.Ferramentaid));
     }
-
+    public String getDataDevolucao() {
+        return emprestimo.getDataDevolucaoDAO(this.getEmprestimoid(this.Amigoid, this.Ferramentaid));
+    }
+    public int getEmprestimoid(int amigoid, int ferramentaid) {
+        return emprestimo.getEmprestimoIDDAO(amigoid, ferramentaid);
+    }
+    // ----------
+    
+    // setters 
     public void setDataDevolucao(String DataDevolucao) {
+        emprestimo.setDataDevolucaoDAO(this.getEmprestimoid(this.Amigoid, this.Ferramentaid), DataDevolucao);
         this.DataDevolucao = DataDevolucao;
     }
-
     public void setDataEmprestimo(String DataEmprestimo) {
+        emprestimo.setDataEmprestimoDAO(this.getEmprestimoid(this.Amigoid, this.Ferramentaid), DataEmprestimo);
         this.DataEmprestimo = DataEmprestimo;
     }
+    // ----------
     
     public void addEmprestimo(int amigoid, int ferramentaid, String data_emprestimo){
         emprestimo.addEmprestimoDAO(amigoid, ferramentaid, data_emprestimo);
     }
     
+    public void addDevolucao(int emprestimoid, String dataDevolucao){
+        emprestimo.addDevolucaoDAO(emprestimoid, dataDevolucao);
+    }
+    
+    public int verificarAmigo(int amigoid){
+        return emprestimo.verificarAmigoDAO(amigoid);
+    }
+    
+    public ArrayList getrelatorioAtivos(){
+        return emprestimo.relatorioAtivosDAO();
+    }
+    
+    public ArrayList getrelatorioHistorico(){
+        return emprestimo.relatorioHistoricoDAO();
+    }
+    
     public int getUsuarioid(){
         return senha.getUarioidDAO();
+    }
+    
+    public String maisEmprestimos(){
+        return emprestimo.maisEmprestimosDAO();
     }
     
 }

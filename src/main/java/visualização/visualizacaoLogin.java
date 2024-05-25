@@ -1,8 +1,9 @@
 
 package visualização;
 
-import modelo.LoginPrincipal;
+import modelo.Senha;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class visualizacaoLogin extends javax.swing.JFrame {
 
@@ -339,7 +340,7 @@ public class visualizacaoLogin extends javax.swing.JFrame {
         // Convertendo a matriz de caracteres em uma string
         String senha = new String(senhaChar);
         
-        LoginPrincipal mainLogin = new LoginPrincipal();
+        Senha mainLogin = new Senha();
         if (mainLogin.checkPassword(senha)){
             visualizacaoMenu menu = new visualizacaoMenu();
             this.setVisible(false);
@@ -354,7 +355,7 @@ public class visualizacaoLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_FecharMouseClicked
 
     private void Esqueci_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Esqueci_senhaActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "A senha está anotada na sua carteira :)");
     }//GEN-LAST:event_Esqueci_senhaActionPerformed
 
     private void ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordActionPerformed

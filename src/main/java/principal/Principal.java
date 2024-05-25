@@ -5,7 +5,7 @@ package principal;
 import visualização.visualizacaoPrimeiro_Acesso;
 import visualização.visualizacaoLogin;
 import dao.Conexao;
-import dao.SenhaDAO;
+import modelo.Senha;
 
 
 public class Principal {
@@ -15,9 +15,8 @@ public class Principal {
         Conexao conexao = new Conexao();
         conexao.getConexao();
         
-        SenhaDAO senha = new SenhaDAO();
-        System.out.println("----------------------"+senha.getSenha());
-        if (senha.getSenha() == null){
+        Senha senha = new Senha();
+        if (senha.getSenha().compareTo("") == 0){
             visualizacaoPrimeiro_Acesso primeiro_acesso = new visualizacaoPrimeiro_Acesso();
             primeiro_acesso.setVisible(true);
         }

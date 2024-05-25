@@ -1,4 +1,3 @@
-
 package modelo;
 
 import dao.FerramentaDAO;
@@ -33,33 +32,39 @@ public class Ferramenta{
     public Double getCusto(){
         return this.Custo;
     }
-
+    public int getFerramentaid(String nome, String marca){
+        return ferramenta.getFerramentaidDAO(nome, marca);
+    }
+    // ----------
+    
     // Setters
-    public void setNome(int ferramentaid, String nome){
+    public void setNome(String nome){
+        String auxNome = this.Nome;
         this.Nome = nome;
-        if (ferramentaid != -1){ferramenta.setNomeDAO(ferramentaid, nome);}
+        ferramenta.setNomeDAO(this.getFerramentaid(auxNome, this.Marca), nome);
     }
-    public void setMarca(int ferramentaid, String marca){
+    public void setMarca(String marca){
+        String auxMarca = this.Marca;
         this.Marca = marca;
-        if (ferramentaid != -1){ferramenta.setMarcaDAO(ferramentaid, marca);}
+        ferramenta.setMarcaDAO(this.getFerramentaid(this.Nome, auxMarca), marca);
     }
-    public void setCusto(int ferramentaid, Double custo){
+    public void setCusto(Double custo){
         this.Custo = custo;
-        if (ferramentaid != -1){ferramenta.setCustoDAO(ferramentaid, custo);}
+        ferramenta.setCustoDAO(this.getFerramentaid(this.Nome, this.Marca), custo);
+    }
+    // ----------
+    
+    // Adiciona ferramenta ao banco de dados
+    public void addFerramenta(){
+        ferramenta.addFerramentaDAO(this.Nome, this.Marca, this.Custo);
     }
     
-    public void addFerramenta(String nome, String marca, double custo){
-        ferramenta.addFerramentaDAO(nome, marca, custo);
+    // Deleta ferramenta do banco de dados
+    public void delFerramenta(){
+        ferramenta.delFerramentaDAO(this.Nome, this.Marca);
     }
     
-    public void delFerramenta(String nome, String marca){
-        ferramenta.delFerramentaDAO(nome, marca);
-    }
-        
-    public int editarFerramenta(String nomeEditar, String marcaEditar){
-        return ferramenta.editarFerramentaDAO(nomeEditar, marcaEditar);
-    }
-    
+    // Retorna lista de ferramentas cadastrads
     public ArrayList getMinhaListaFerramenta(){
         return ferramenta.getFerramentaDAO();
     }

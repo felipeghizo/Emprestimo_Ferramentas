@@ -293,11 +293,11 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
         int cont = 0;
         while(cont < minhaLista.size()){
             // Verificar o tipo do primeiro objeto na lista
-            Object primeiroAmigo = minhaLista.get(cont);
-            if (primeiroAmigo instanceof Amigo) {
+            Object AmigoAtual = minhaLista.get(cont);
+            if (AmigoAtual instanceof Amigo) {
                 // Exibir os dados do amigo atual na lista
-                String nome = ((Amigo) primeiroAmigo).getNome();
-                String telefone = ((Amigo) primeiroAmigo).getTelefone();
+                String nome = ((Amigo) AmigoAtual).getNome();
+                String telefone = ((Amigo) AmigoAtual).getTelefone();
                 tupla += nome+"    ->     "+telefone+"\n";
                 cont++;
             } else {
@@ -313,9 +313,11 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_listaAmigosActionPerformed
 
     private void editAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAmigoActionPerformed
-        String editAmigo = JOptionPane.showInputDialog("Nome ou telefone do amigo: ");
-        int amigoid = amigo.editarAmigo(editAmigo);
-        if(amigoid == 9999999){
+        String nomeAmigo = JOptionPane.showInputDialog("Nome do amigo: ");
+        String telefoneAmigo = JOptionPane.showInputDialog("Telefone do amigo: ");
+        Amigo amigoEdit = new Amigo(nomeAmigo, telefoneAmigo);
+        int amigoid = amigoEdit.getAmigoid(nomeAmigo, telefoneAmigo);
+        if(amigoid == -1){
            JOptionPane.showMessageDialog(null, "Dados não encontrados!"); 
         }else{
             // Definindo o look and feel do sistema operacional
@@ -349,12 +351,12 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
            // Tratamento da opção selecionada
            switch (option) {
                case 0: // Salvar
-                   String editNome = JOptionPane.showInputDialog("Novo nome: ");
-                   amigo.setNome(amigoid, editNome);
+                   String novoNome = JOptionPane.showInputDialog("Novo nome: ");
+                   amigoEdit.setNome(novoNome);
                    break;
                case 1: // Não Salvar
-                   String editTelefone = JOptionPane.showInputDialog("Novo telefone: ");
-                   amigo.setTelefone(amigoid, editTelefone);
+                   String novoTelefone = JOptionPane.showInputDialog("Novo telefone: ");
+                   amigoEdit.setTelefone(novoTelefone);
                    break;
                case 2: // Cancelar
                    JOptionPane.showMessageDialog(null, "Operação cancelada!");
@@ -367,15 +369,17 @@ public class visualizacaoAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_editAmigoActionPerformed
 
     private void ExcluirAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirAmigoActionPerformed
-        String nomeAmigo = JOptionPane.showInputDialog(null, "Nome:");
-        String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
-        amigo.delAmigo(nomeAmigo, foneAmigo);
+        String delNome = JOptionPane.showInputDialog(null, "Nome:");
+        String delFone = JOptionPane.showInputDialog(null, "Telefone:");
+        Amigo amigoDel = new Amigo(delNome, delFone);
+        amigoDel.delAmigo();
     }//GEN-LAST:event_ExcluirAmigoActionPerformed
 
     private void addAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAmigoActionPerformed
         String addAmigo = JOptionPane.showInputDialog(null, "Nome:");
-        String foneAmigo = JOptionPane.showInputDialog(null, "Telefone:");
-        amigo.addAmigo(addAmigo, foneAmigo);
+        String addFone = JOptionPane.showInputDialog(null, "Telefone:");
+        Amigo amigoAdd = new Amigo(addAmigo, addFone);
+        amigoAdd.addAmigo();
     }//GEN-LAST:event_addAmigoActionPerformed
 
     /**

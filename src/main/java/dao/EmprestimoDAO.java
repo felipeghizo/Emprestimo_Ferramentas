@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Amigo;
 import modelo.Emprestimo;
+import modelo.Ferramenta;
 
 
 public class EmprestimoDAO {
@@ -18,60 +20,85 @@ public class EmprestimoDAO {
     Conexao conexao = new Conexao();
     SenhaDAO senha = new SenhaDAO();
     
-    public void setNomeDAO(int ferramentaid, String novoNome){  
-    String sql = """
-                 UPDATE db_ferramentas
-                 SET nome = (?)
-                 WHERE ferramentaid = (?);""";
+    // getters
+    public String getAmigoDAO(int amigoid){
+        String sql = """
+                SELECT nome FROM db_amigos 
+                WHERE amigoid = (?)""";
+        String amigo = "";
         try {
             PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
-            stmt.setString(1, novoNome);
-            stmt.setInt(2, ferramentaid);
+            stmt.setInt(1, amigoid);
             stmt.execute();
+            ResultSet rs = stmt.executeQuery(); // Executando a consulta e obtendo o resultado
+
+            if (rs.next()) {
+                amigo = rs.getString("nome"); // Obtendo a data da consulta
+            }
+
+            rs.close(); // Fechando o ResultSet
             stmt.close();
         } catch (SQLException erro) {
             System.out.println("Erro:" + erro);
             throw new RuntimeException(erro);
         }
+        return amigo;
     }
     
-    public void setMarcaDAO(int ferramentaid, String novaMarca){
-      String sql = """
-                 UPDATE db_ferramentas
-                 SET marca = (?)
-                 WHERE ferramentaid = (?);""";
+    public String getFerramentaDAO(int ferramentaid){
+        String sql = """
+                SELECT nome FROM db_ferramentas 
+                WHERE ferramentaid = (?)""";
+        String ferramenta = "";
         try {
             PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
-            stmt.setString(1, novaMarca);
-            stmt.setInt(2, ferramentaid);
+            stmt.setInt(1, ferramentaid);
             stmt.execute();
+            ResultSet rs = stmt.executeQuery(); // Executando a consulta e obtendo o resultado
+
+            if (rs.next()) {
+                ferramenta = rs.getString("nome"); // Obtendo a data da consulta
+            }
+
+            rs.close(); // Fechando o ResultSet
             stmt.close();
         } catch (SQLException erro) {
             System.out.println("Erro:" + erro);
             throw new RuntimeException(erro);
         }
+        return ferramenta;
     }
     
-    public void setCustoDAO(int ferramentaid, double novoCusto){
-      String sql = """
-                 UPDATE db_ferramentas
-                 SET custo = (?)
-                 WHERE ferramentaid = (?);""";
+    public String getDataEmprestimoDAO(int emprestimoid) {
+        String sql = """
+                 SELECT data_emprestimo FROM db_emprestimos 
+                 WHERE emprestimoid = (?)""";
+        String dataEmprestimoReturn = "";
+
         try {
-            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
-            stmt.setDouble(1, novoCusto);
-            stmt.setInt(2, ferramentaid);
-            stmt.execute();
-            stmt.close();
+            // Supondo que `conexao` é uma instância de uma classe que retorna a conexão com o banco de dados
+            Connection connection = conexao.getConexao();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, emprestimoid); // Definindo o parâmetro da consulta
+            ResultSet rs = stmt.executeQuery(); // Executando a consulta e obtendo o resultado
+
+            if (rs.next()) {
+                dataEmprestimoReturn = rs.getString("data_emprestimo"); // Obtendo a data da consulta
+            }
+
+            rs.close(); // Fechando o ResultSet
+            stmt.close(); // Fechando o PreparedStatement
         } catch (SQLException erro) {
             System.out.println("Erro:" + erro);
             throw new RuntimeException(erro);
         }
+
+        return dataEmprestimoReturn;
     }
     
     public String getDataDevolucaoDAO(int emprestimoid) {
         String sql = """
-                 SELECT data_emprestimo FROM db_ferramentas 
+                 SELECT data_devolucao FROM db_emprestimos
                  WHERE emprestimoid = (?)""";
         String dataDevolucao = null;
 
@@ -83,7 +110,7 @@ public class EmprestimoDAO {
             ResultSet rs = stmt.executeQuery(); // Executando a consulta e obtendo o resultado
 
             if (rs.next()) {
-                dataDevolucao = rs.getString("data_emprestimo"); // Obtendo a data da consulta
+                dataDevolucao = rs.getString("data_devolucao"); // Obtendo a data da consulta
             }
 
             rs.close(); // Fechando o ResultSet
@@ -95,9 +122,7 @@ public class EmprestimoDAO {
 
         return dataDevolucao;
     }
-    
-    // Retorna a Lista de Amigos(objetos)
-    public ArrayList getDataDevolucaoDAO() {
+    public ArrayList getEmprestimosDAO() {
         minhaLista.clear(); // Limpa nosso ArrayList
         try {
             Statement stmt = conexao.getConexao().createStatement();
@@ -116,45 +141,7 @@ public class EmprestimoDAO {
         }
         return minhaLista;
     }
-    
-    // Adiciona Ferramentas(objetos)
-    public void addEmprestimoDAO(int amigoid, int ferramentaid, String data_emprestimo) {
-        String sql = """
-                    INSERT INTO db_emprestimos
-                    (amigoid, ferramentaid, usuarioid, data_emprestimo, data_devolucao) 
-                    VALUES(?,?,?,?,?)
-                    """;
-        try {
-            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
-            stmt.setInt(1, amigoid);
-            stmt.setInt(2, ferramentaid);
-            stmt.setInt(3, senha.getUarioidDAO());
-            stmt.setString(4, data_emprestimo);
-            stmt.setString(5, "");
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException erro) {
-            System.out.println("Erro:" + erro);
-            throw new RuntimeException(erro);
-        }
-    }
-    
-    // Deleta Ferramentas(objetos)
-    public void delFerramentaDAO(String nome, String marca) {
-        String sql = "DELETE FROM db_ferramentas WHERE nome = (?) AND marca = (?);";
-        try {
-            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.setString(2, marca);
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException erro) {
-            System.out.println("Erro:" + erro);
-            throw new RuntimeException(erro);
-        }
-    }
-    
-    public int editarEmprestimoDAO(int amigoid, int ferramentaid) {
+    public int getEmprestimoIDDAO(int amigoid, int ferramentaid) {
         String sql = "SELECT COUNT(*) AS total FROM db_emprestimos WHERE amigoid = ? AND ferramentaid = ?";
         int emprestimoid = 0;
 
@@ -193,5 +180,179 @@ public class EmprestimoDAO {
             System.out.println("Erro ao editar emprestimo: " + e.getMessage());
         }
         return emprestimoid;
+    }
+    // ----------
+    
+    // setters
+    public void setDataEmprestimoDAO(int emprestimoid, String novaDataEmprestimo){  
+    String sql = """
+                 UPDATE db_emprestimos
+                 SET data_emprestimo = (?)
+                 WHERE emprestimoid = (?);""";
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
+            stmt.setString(1, novaDataEmprestimo);
+            stmt.setInt(2, emprestimoid);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    
+    public void setDataDevolucaoDAO(int emprestimoid, String novaDataDevolucao){
+      String sql = """
+                 UPDATE db_emprestimos
+                 SET data_devolucao = (?)
+                 WHERE emprestimoid = (?);""";
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
+            stmt.setString(1, novaDataDevolucao);
+            stmt.setInt(2, emprestimoid);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    // ----------  
+
+    // Adiciona Emprestimo ao banco de dados
+    public void addEmprestimoDAO(int amigoid, int ferramentaid, String data_emprestimo) {
+        String sql = """
+                    INSERT INTO db_emprestimos
+                    (amigoid, ferramentaid, usuarioid, data_emprestimo, data_devolucao) 
+                    VALUES(?,?,?,?,?)
+                    """;
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
+            stmt.setInt(1, amigoid);
+            stmt.setInt(2, ferramentaid);
+            stmt.setInt(3, senha.getUarioidDAO());
+            stmt.setString(4, data_emprestimo);
+            stmt.setString(5, "");
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    
+    // Adiciona devolucao ao banco de dados
+    public void addDevolucaoDAO(int emprestimoid, String dataDevolucao) {
+        String sql = """
+                    UPDATE db_emprestimos
+                    SET data_devolucao = (?)
+                    WHERE  emprestimoid = (?)
+                    """;
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
+            stmt.setString(1, dataDevolucao);
+            stmt.setInt(2, emprestimoid);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    
+    // Verifica se amigo tem emprestimos ativos
+    public int verificarAmigoDAO(int amigoid){
+        String sql = """
+                 SELECT data_devolucao FROM db_emprestimos 
+                 WHERE amigoid = (?)""";
+        String dataDevolucao = "semEmprestimo";
+
+        try {
+            // Supondo que `conexao` é uma instância de uma classe que retorna a conexão com o banco de dados
+            Connection connection = conexao.getConexao();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, amigoid); // Definindo o parâmetro da consulta
+            ResultSet rs = stmt.executeQuery(); // Executando a consulta e obtendo o resultado
+
+            if (rs.next()) {
+                dataDevolucao = rs.getString("data_devolucao"); // Obtendo a data da consulta
+            }
+
+            rs.close(); // Fechando o ResultSet
+            stmt.close(); // Fechando o PreparedStatement
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+        if (dataDevolucao.compareTo("") == 0){
+            return -1;
+        }else{
+            return amigoid;
+        }
+    }
+    
+    // Retorna a Lista de emprestimos ativos
+    public ArrayList relatorioAtivosDAO() {
+        minhaLista.clear(); // Limpa nosso ArrayList
+        try {
+            Statement stmt = conexao.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM db_emprestimos WHERE data_devolucao = ''");
+            while (res.next()) {
+                int amigoid = res.getInt("amigoid");
+                int ferramentaid = res.getInt("ferramentaid");
+                String data_emprestimo = res.getString("data_emprestimo");
+                Emprestimo objeto = new Emprestimo("", data_emprestimo, amigoid, ferramentaid);
+                minhaLista.add(objeto);
+            }
+            stmt.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Deu ruim paizao!");
+        }
+        return minhaLista;
+    }
+    
+    // Retorna o hist[orico de empréstimos
+    public ArrayList relatorioHistoricoDAO() {
+        minhaLista.clear(); // Limpa nosso ArrayList
+        Amigo amigoNome = new Amigo();
+        Ferramenta FerramentaNome = new Ferramenta();
+        try {
+            Statement stmt = conexao.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM db_emprestimos WHERE data_devolucao  <> ''");
+            while (res.next()) {
+                int amigoid = res.getInt("amigoid");
+                int ferramentaid = res.getInt("ferramentaid");
+                String data_emprestimo = res.getString("data_emprestimo");
+                String data_devolucao = res.getString("data_devolucao");
+                Emprestimo objeto = new Emprestimo(data_devolucao, data_emprestimo, amigoid, ferramentaid);
+                minhaLista.add(objeto);
+            }
+            stmt.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Deu ruim paizao!");
+        }
+        return minhaLista;
+    }
+    
+    // Retorna o amigo com mais emprestimos
+    public String maisEmprestimosDAO(){
+        String sql = """
+                    SELECT a.nome, COUNT(e.amigoid) AS ocorrencias  
+                    FROM db_amigos a  
+                    JOIN db_emprestimos e ON a.amigoid = e.amigoid  
+                    GROUP BY a.nome  
+                    ORDER BY ocorrencias DESC  
+                    LIMIT 1""";
+        String nomeMaisFrequente = "";
+        try (Connection conn = conexao.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet res = stmt.executeQuery()) {
+            if (res.next()) {
+                nomeMaisFrequente = res.getString("nome");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o nome mais frequente: " + e.getMessage());
+        }
+        return nomeMaisFrequente;
     }
 }

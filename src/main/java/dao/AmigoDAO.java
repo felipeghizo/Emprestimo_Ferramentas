@@ -12,10 +12,96 @@ import modelo.Amigo;
 
 
 public class AmigoDAO {
-    
-    ArrayList minhaLista = new ArrayList();
     Conexao conexao = new Conexao();
+    ArrayList minhaLista = new ArrayList();
     
+    // Getters 
+    public String getNomeDAO(int amigoid) {
+        String sql = "SELECT nome FROM db_amigos WHERE amigoid = ?";
+        String nome = "";
+        try (Connection conn = conexao.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            // Configura os parâmetros da query
+            stmt.setInt(1, amigoid);
+            // Executa a query
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
+                    nome = res.getString("nome");
+                } else {
+                    // Nenhum amigo foi encontrado, você pode lidar com isso aqui
+                    System.out.println("Nenhum amigo encontrado com o id: " + amigoid);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o nome do amigo: " + e.getMessage());
+        }
+        return nome;
+    }
+    public String getTelefoneDAO(int amigoid) {
+        String sql = "SELECT telefone FROM db_amigos WHERE amigoid = ?";
+        String telefone = "";
+        try (Connection conn = conexao.getConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            // Configura os parâmetros da query
+            stmt.setInt(1, amigoid);
+            // Executa a query
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
+                    telefone = res.getString("telefone");
+                } else {
+                    // Nenhum amigo foi encontrado, você pode lidar com isso aqui
+                    System.out.println("Nenhum amigo encontrado com o id: " + amigoid);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o telefone do amigo: " + e.getMessage());
+        }
+        return telefone;
+    }
+    public int getAmigoidDAO(String nome, String telefone) {
+        String sql = "SELECT COUNT(*) AS total FROM db_amigos WHERE nome = ? AND telefone = ?";
+        int amigoid = 0;
+
+        try (Connection conn = conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            // Configura os parâmetros da query
+            stmt.setString(1, nome);
+            stmt.setString(2, telefone);
+
+            // Executa a query
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
+                    // Obtém o total de amigos encontrados
+                    int totalAmigos = res.getInt("total");
+                    if (totalAmigos > 0) {
+                        // Pelo menos um amigo foi encontrado, vamos obter o amigoid
+                        sql = "SELECT amigoid FROM db_amigos WHERE nome = ? AND telefone = ?";
+                        try (PreparedStatement stmt2 = conn.prepareStatement(sql)) {
+                            stmt2.setString(1, nome);
+                            stmt2.setString(2, telefone);
+
+                            // Executa a segunda query
+                            ResultSet res2 = stmt2.executeQuery();
+                            if (res2.next()) {
+                                amigoid = res2.getInt("amigoid");
+                            }
+                        }
+                    } else {
+                        // Nenhum amigo foi encontrado, você pode lidar com isso aqui
+                        return -1;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao editar amigo: " + e.getMessage());
+        }
+
+        return amigoid;
+    }    
+    // ----------
+    
+    // Setters
     public void setNomeDAO(int amigoid, String novoNome){  
     String sql = """
                  UPDATE db_amigos
@@ -49,6 +135,7 @@ public class AmigoDAO {
             throw new RuntimeException(erro);
         }
     }
+    // ----------
     
     // Retorna a Lista de Amigos(objetos)
     public ArrayList getMinhaListaAmigoDAO() {
@@ -97,47 +184,5 @@ public class AmigoDAO {
             System.out.println("Erro:" + erro);
             throw new RuntimeException(erro);
         }
-    }
-    
-    public int editarAmigoDAO(String editar) {
-        String sql = "SELECT COUNT(*) AS total FROM db_amigos WHERE nome = ? OR telefone = ?";
-        int amigoid = 0;
-
-        try (Connection conn = conexao.getConexao();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            // Configura os parâmetros da query
-            stmt.setString(1, editar);
-            stmt.setString(2, editar);
-
-            // Executa a query
-            try (ResultSet res = stmt.executeQuery()) {
-                if (res.next()) {
-                    // Obtém o total de amigos encontrados
-                    int totalAmigos = res.getInt("total");
-                    if (totalAmigos > 0) {
-                        // Pelo menos um amigo foi encontrado, vamos obter o amigoid
-                        sql = "SELECT amigoid FROM db_amigos WHERE nome = ? OR telefone = ?";
-                        try (PreparedStatement stmt2 = conn.prepareStatement(sql)) {
-                            stmt2.setString(1, editar);
-                            stmt2.setString(2, editar);
-
-                            // Executa a segunda query
-                            ResultSet res2 = stmt2.executeQuery();
-                            if (res2.next()) {
-                                amigoid = res2.getInt("amigoid");
-                            }
-                        }
-                    } else {
-                        // Nenhum amigo foi encontrado, você pode lidar com isso aqui
-                        return -1;
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro ao editar amigo: " + e.getMessage());
-        }
-
-        return amigoid;
     }
 }

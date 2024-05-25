@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import modelo.Amigo;
 import modelo.Ferramenta;
 
 
@@ -244,7 +243,8 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String editNome = JOptionPane.showInputDialog("Nome da ferramenta: ");
         String editMarca = JOptionPane.showInputDialog("Marca da ferramenta: ");
-        int ferramentaid = ferramenta.editarFerramenta(editNome, editMarca);
+        Ferramenta ferramentaEdit = new Ferramenta(editNome, editMarca, 0.0);
+        int ferramentaid = ferramentaEdit.getFerramentaid(editNome, editMarca);
         if(ferramentaid == -1){
            JOptionPane.showMessageDialog(null, "Dados não encontrados!"); 
         }else{
@@ -280,15 +280,15 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
            switch (option) {
                case 0: // Salvar
                    editNome = JOptionPane.showInputDialog("Novo nome: ");
-                   ferramenta.setNome(ferramentaid, editNome);
+                   ferramentaEdit.setNome(editNome);
                    break;
                case 1: // Não Salvar
                    editMarca = JOptionPane.showInputDialog("Nova Marca: ");
-                   ferramenta.setMarca(ferramentaid, editMarca);
+                   ferramentaEdit.setMarca(editMarca);
                    break;
                case 2: // Cancelar
                    double editCusto = Double.parseDouble(JOptionPane.showInputDialog("Novo Custo: "));
-                   ferramenta.setCusto(ferramentaid, editCusto);
+                   ferramentaEdit.setCusto(editCusto);
                    break;
                case 3: // Cancelar
                    JOptionPane.showMessageDialog(null, "Operação cancelada!");
@@ -320,7 +320,8 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
         String nome = JOptionPane.showInputDialog(null, "Nome:");
         String marca = JOptionPane.showInputDialog(null, "Marca:");
         double custo = Double.parseDouble(JOptionPane.showInputDialog(null, "custo R$:"));
-        ferramenta.addFerramenta(nome, marca, custo);        
+        Ferramenta FerramentaAdd = new Ferramenta(nome, marca, custo);
+        FerramentaAdd.addFerramenta();        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -330,7 +331,8 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
     private void excluirFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirFerramentaActionPerformed
         String nomeAmigo = JOptionPane.showInputDialog(null, "Nome:");
         String foneAmigo = JOptionPane.showInputDialog(null, "Marca:");
-        ferramenta.delFerramenta(nomeAmigo, foneAmigo);
+        Ferramenta ferramentaDel = new Ferramenta(nomeAmigo, foneAmigo, 0.0);
+        ferramentaDel.delFerramenta();
     }//GEN-LAST:event_excluirFerramentaActionPerformed
 
     private void relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioActionPerformed
@@ -354,11 +356,10 @@ public class visualizacaoFerramenta extends javax.swing.JFrame {
                 System.out.println("O objeto na lista não é do tipo Ferramenta.");
             }
         } 
-        JOptionPane.showMessageDialog(null, tupla);
         if (minhaLista.isEmpty()){
             // Exibir mensagem informando que a lista está vazia
             JOptionPane.showMessageDialog(null, "A lista de ferramentas está vazia.");
-        }
+        }else{JOptionPane.showMessageDialog(null, tupla);}
     }//GEN-LAST:event_relatorioActionPerformed
 
     private void custoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custoTotalActionPerformed

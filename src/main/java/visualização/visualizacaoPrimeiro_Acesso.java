@@ -1,12 +1,13 @@
 
 package visualização;
 
-import modelo.LoginPrincipal;
+import modelo.Senha;
 import java.awt.Color;
-import dao.SenhaDAO;
+
 
 public class visualizacaoPrimeiro_Acesso extends javax.swing.JFrame {
-    SenhaDAO setsenha = new SenhaDAO();
+    Senha senha = new Senha();
+    
     public visualizacaoPrimeiro_Acesso() {
         // Configurações do JFrame
         setTitle("Primeiro acesso");
@@ -226,7 +227,7 @@ public class visualizacaoPrimeiro_Acesso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(orangePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+            .addComponent(orangePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 590, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,15 +242,14 @@ public class visualizacaoPrimeiro_Acesso extends javax.swing.JFrame {
         char[] senhaChar = Password.getPassword();
         char[] senhaConfChar = PasswordConfirmation.getPassword();
         // Convertendo a matriz de caracteres em uma string
-        String senha = new String(senhaChar);
+        String senhaCompleta = new String(senhaChar);
         String senhaConf = new String(senhaConfChar);
        
-        LoginPrincipal login = new LoginPrincipal();
-        if (login.Password(senha, senhaConf)){
+        Senha login = new Senha();
+        if (login.Password(senhaCompleta, senhaConf)){
             ErrorMesage.setVisible(false); 
-           setsenha.configSenha(senha);
-           OkMesage.setVisible(true);
-           Seguir.setVisible(true);
+            OkMesage.setVisible(true);
+            Seguir.setVisible(true);
         }else{
             ErrorMesage.setVisible(true); 
         }
@@ -268,8 +268,7 @@ public class visualizacaoPrimeiro_Acesso extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordActionPerformed
 
     private void SeguirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguirActionPerformed
-        //this.setVisible(false);
-        this.setEnabled(false);
+        this.setVisible(false);
         visualizacaoMenu menu = new visualizacaoMenu();
         menu.setVisible(true);
     }//GEN-LAST:event_SeguirActionPerformed
