@@ -309,9 +309,9 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
 
     private void emprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarActionPerformed
         String[] aux = selecionarAmigo.getText().split(" ");
-        int amigoid = amigo1.getAmigoid(aux[0], aux[1]);
         String[] ferra = selecionarFerramenta.getText().split(" "); 
         int ferramentaid = ferramenta1.getFerramentaid(ferra[0], ferra[1]);
+        int amigoid = amigo1.getAmigoid(aux[0], aux[1]);
         if (emprestimo.verificarAmigo(amigoid) != -1){
             emprestimo.addEmprestimo(amigoid, ferramentaid, atualizarData());
         }else{
@@ -389,7 +389,7 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
                 String amigo = ((Emprestimo) primeiroEmprestimo).getAmigo();
                 String ferramenta = ((Emprestimo) primeiroEmprestimo).getFerramenta();
                 String dataEmprestimo = ((Emprestimo) primeiroEmprestimo).getDataEmprestimo();
-                tupla += amigo+"  "+ferramenta+"  "+dataEmprestimo+"\n";
+                tupla += amigo+"           "+ferramenta+"                 "+dataEmprestimo+"\n";
                 cont++;
             } else {
                 // Tipo de objeto inesperado
@@ -429,7 +429,7 @@ public class visualizacaoEmprestimo extends javax.swing.JFrame {
         
         if (minhaLista.isEmpty()){
             // Exibir mensagem informando que a lista está vazia
-            JOptionPane.showMessageDialog(null, "A lista de ferramentas está vazia.");
+            JOptionPane.showMessageDialog(null, "A lista de empréstimos está vazia.");
         }else{JOptionPane.showMessageDialog(null, tupla);}
     }//GEN-LAST:event_jButton5ActionPerformed
 

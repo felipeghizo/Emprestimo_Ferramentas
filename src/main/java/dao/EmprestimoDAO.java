@@ -159,11 +159,15 @@ public class EmprestimoDAO {
                     int totalEmprestimos = res.getInt("total");
                     if (totalEmprestimos > 0) {
                         // Pelo menos um amigo foi encontrado, vamos obter o amigoid
-                        sql = "SELECT emprestimoid FROM db_emprestimos WHERE amigoid = ? AND ferramentaid = ?";
+                        sql = """
+                              SELECT emprestimoid 
+                              FROM db_emprestimos 
+                              WHERE amigoid = ? AND ferramentaid = ? 
+                              ORDER BY emprestimoid DESC
+                              LIMIT 1""";
                         try (PreparedStatement stmt2 = conn.prepareStatement(sql)) {
                             stmt2.setInt(1, amigoid);
                             stmt2.setInt(2, ferramentaid);
-
                             // Executa a segunda query
                             ResultSet res2 = stmt2.executeQuery();
                             if (res2.next()) {
@@ -171,7 +175,6 @@ public class EmprestimoDAO {
                             }
                         }
                     } else {
-                        // Nenhum amigo foi encontrado, você pode lidar com isso aqui
                         return -1;
                     }
                 }
@@ -263,9 +266,12 @@ public class EmprestimoDAO {
     // Verifica se amigo tem emprestimos ativos
     public int verificarAmigoDAO(int amigoid){
         String sql = """
-                 SELECT data_devolucao FROM db_emprestimos 
-                 WHERE amigoid = (?)""";
-        String dataDevolucao = "semEmprestimo";
+                    SELECT data_devolucao FROM db_emprestimos 
+                    WHERE amigoid = (?)
+                    ORDER BY emprestimoid DESC
+                    LIMIT 1
+                     """;
+        String dataDevolucao = "a";
 
         try {
             // Supondo que `conexao` é uma instância de uma classe que retorna a conexão com o banco de dados
@@ -273,7 +279,6 @@ public class EmprestimoDAO {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, amigoid); // Definindo o parâmetro da consulta
             ResultSet rs = stmt.executeQuery(); // Executando a consulta e obtendo o resultado
-
             if (rs.next()) {
                 dataDevolucao = rs.getString("data_devolucao"); // Obtendo a data da consulta
             }
