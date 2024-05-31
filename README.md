@@ -18,7 +18,7 @@ Unidade Curricular: Programação de Soluções Computacionais<br /><br />
   Usuário: root<br />
   Senha: admin123<br />
 
-  O codigo pra criar o banco de dados esta no arquivo bd.txt
+  O codigo pra criar o banco de dados esta no arquivo CriarBD.txt
 
   
    <h2>A3 – Desempenho de compreensão</h2>
