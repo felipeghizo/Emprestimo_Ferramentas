@@ -2,7 +2,6 @@
 package modelo;
 
 import visualização.visualizacaoPrimeiro_Acesso; 
-import dao.SenhaDAO;
 
 
 public class LoginPrincipal {
@@ -41,7 +40,7 @@ public class LoginPrincipal {
     }
     
     public boolean checkPassword(String senha){
-        SenhaDAO senhaCoparacao = new SenhaDAO();
+        Senha senhaCoparacao = new Senha();
         return senhaCoparacao.getSenha().compareTo(senha) == 0;
     }
 }
